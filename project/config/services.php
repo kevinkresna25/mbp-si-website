@@ -35,4 +35,21 @@ return [
         ],
     ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
+    ],
+
+    'turnstile' => [
+        'site_key' => env('TURNSTILE_SITE_KEY'),
+        'secret_key' => env('TURNSTILE_SECRET_KEY'),
+    ],
+
+    'prayer_time' => [
+        'api_key' => env('PRAYER_TIME_API_KEY'),
+        'city' => env('PRAYER_TIME_CITY', 'Surabaya'),
+        'country' => env('PRAYER_TIME_COUNTRY', 'Indonesia'),
+    ],
+
 ];
