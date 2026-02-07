@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\KegiatanController;
 use App\Http\Controllers\Admin\KutipanHikmahController;
 use App\Http\Controllers\Admin\PembangunanController;
 use App\Http\Controllers\Admin\PengumumanController;
+use App\Http\Controllers\Admin\PrayerTimeController;
 use App\Http\Controllers\Admin\StaticPageController;
 use App\Http\Controllers\Admin\StrukturController;
 use App\Http\Controllers\Admin\TransactionController;
@@ -81,6 +82,12 @@ Route::middleware('role:takmir_inti|admin')->group(function () {
     Route::post('/pembangunan/{pembangunan}/upload-photos', [PembangunanController::class, 'uploadPhotos'])->name('pembangunan.upload-photos');
     Route::post('/pembangunan/{pembangunan}/upload-masterplan', [PembangunanController::class, 'uploadMasterplan'])->name('pembangunan.upload-masterplan');
     Route::delete('/pembangunan/{pembangunan}/media/{mediaId}', [PembangunanController::class, 'deleteMedia'])->name('pembangunan.delete-media');
+});
+
+// ─── Prayer Times Module (takmir_inti & admin) ──────────────────────────────
+Route::middleware('role:takmir_inti|admin')->group(function () {
+    Route::get('/prayer-times', [PrayerTimeController::class, 'index'])->name('prayer-times.index');
+    Route::post('/prayer-times/sync', [PrayerTimeController::class, 'sync'])->name('prayer-times.sync');
 });
 
 // ─── System Module (admin only) ────────────────────────────────────────────────

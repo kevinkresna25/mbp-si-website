@@ -28,10 +28,10 @@
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @php
-                $totalIncome = \App\Models\Transaction::where('type', 'income')->where('status', \App\Enums\TransactionStatus::Approved)->sum('amount');
-                $totalExpense = \App\Models\Transaction::where('type', 'expense')->where('status', \App\Enums\TransactionStatus::Approved)->sum('amount');
+                $totalIncome = \App\Models\Transaction::where('type', \App\Enums\TransactionType::Debit)->where('status', \App\Enums\TransactionStatus::Approved)->sum('nominal');
+                $totalExpense = \App\Models\Transaction::where('type', \App\Enums\TransactionType::Credit)->where('status', \App\Enums\TransactionStatus::Approved)->sum('nominal');
                 $saldo = $totalIncome - $totalExpense;
-                $pendingCount = \App\Models\Transaction::where('status', \App\Enums\TransactionStatus::Pending)->count();
+                $pendingCount = \App\Models\Transaction::where('status', \App\Enums\TransactionStatus::Submitted)->count();
                 $monthlyTrx = \App\Models\Transaction::whereMonth('tanggal', now()->month)->whereYear('tanggal', now()->year)->count();
             @endphp
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
@@ -130,7 +130,7 @@
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @php
-                $pendingApprovals = \App\Models\Transaction::where('status', \App\Enums\TransactionStatus::Pending)->count();
+                $pendingApprovals = \App\Models\Transaction::where('status', \App\Enums\TransactionStatus::Submitted)->count();
                 $activePengumuman = \App\Models\Pengumuman::active()->count();
                 $activeDonations = \App\Models\DonationTarget::active()->count();
             @endphp

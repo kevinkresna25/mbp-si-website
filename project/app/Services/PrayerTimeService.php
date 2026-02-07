@@ -14,6 +14,23 @@ class PrayerTimeService
     private const CACHE_TTL = 86400; // 24 hours
 
     /**
+     * Create an HTTP client with explicit SSL certificate verification.
+     * This ensures the correct cacert.pem is used regardless of server restart state.
+     */
+    private function http(int $timeout = 10): \Illuminate\Http\Client\PendingRequest
+    {
+        $caInfo = ini_get('curl.cainfo');
+
+        $request = Http::timeout($timeout);
+
+        if ($caInfo && file_exists($caInfo)) {
+            $request = $request->withOptions(['verify' => $caInfo]);
+        }
+
+        return $request;
+    }
+
+    /**
      * Get prayer times for today.
      */
     public function getToday(): ?PrayerTime
@@ -152,7 +169,7 @@ class PrayerTimeService
     public function fetchFromAPI(string $date): ?PrayerTime
     {
         try {
-            $response = Http::timeout(10)->get(self::API_BASE . "/timingsByCity/{$date}", [
+            $response = $this->http(10)->get(self::API_BASE . "/timingsByCity/{$date}", [
                 'city'    => 'Surabaya',
                 'country' => 'Indonesia',
                 'method'  => 20, // Kemenag
@@ -193,7 +210,7 @@ class PrayerTimeService
     public function fetchMonthFromAPI(int $month, int $year): array
     {
         try {
-            $response = Http::timeout(15)->get(self::API_BASE . "/calendarByCity/{$year}/{$month}", [
+            $response = $this->http(15)->get(self::API_BASE . "/calendarByCity/{$year}/{$month}", [
                 'city'    => 'Surabaya',
                 'country' => 'Indonesia',
                 'method'  => 20, // Kemenag
