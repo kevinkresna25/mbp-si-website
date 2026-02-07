@@ -10,7 +10,9 @@ use App\Http\Controllers\Public\KeuanganController;
 use App\Http\Controllers\Public\KontakController;
 use App\Http\Controllers\Public\LayananController;
 use App\Http\Controllers\Public\PembangunanController;
+use App\Http\Controllers\Public\PengumumanController;
 use App\Http\Controllers\Public\ProfilController;
+use App\Http\Controllers\Public\VideoCeramahController;
 use Illuminate\Support\Facades\Route;
 
 // ─── Public Homepage ─────────────────────────────────────────────────────────
@@ -25,6 +27,14 @@ Route::get('/profil/lokasi', [ProfilController::class, 'lokasi'])->name('profil.
 // ─── Public Artikel Routes ───────────────────────────────────────────────────
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('public.artikel.index');
 Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('public.artikel.show');
+
+// ─── Public Video Ceramah Routes ────────────────────────────────────────────
+Route::get('/video-ceramah', [VideoCeramahController::class, 'index'])->name('public.video-ceramah.index');
+Route::get('/video-ceramah/{videoCeramah}', [VideoCeramahController::class, 'show'])->name('public.video-ceramah.show');
+
+// ─── Public Pengumuman Routes ───────────────────────────────────────────────
+Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('public.pengumuman.index');
+Route::get('/pengumuman/{pengumuman}', [PengumumanController::class, 'show'])->name('public.pengumuman.show');
 
 Route::get('/dashboard', function () {
     return redirect()->route('admin.dashboard');

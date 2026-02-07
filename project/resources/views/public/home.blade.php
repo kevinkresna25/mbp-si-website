@@ -119,16 +119,22 @@
                 <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 text-sm font-semibold rounded-full mb-3">Info Terkini</span>
                 <h2 class="text-3xl font-bold text-gray-900">Pengumuman</h2>
             </div>
+            <div class="flex justify-end mb-4">
+                <a href="{{ route('public.pengumuman.index') }}" class="text-sm font-medium text-emerald-700 hover:text-emerald-800 transition flex items-center">
+                    Lihat Semua Pengumuman
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </div>
             <div class="grid md:grid-cols-3 gap-6">
                 @foreach($pengumuman as $item)
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition">
+                <a href="{{ route('public.pengumuman.show', $item) }}" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition block">
                     <div class="flex items-center justify-between mb-3">
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Pengumuman</span>
                         <span class="text-xs text-gray-400">{{ $item->created_at->diffForHumans() }}</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ $item->title }}</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 hover:text-emerald-700 transition">{{ $item->title }}</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">{{ \Illuminate\Support\Str::limit(strip_tags($item->content), 150) }}</p>
-                </div>
+                </a>
                 @endforeach
             </div>
         </div>
