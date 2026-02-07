@@ -34,6 +34,7 @@
                             <th class="px-4 py-3 text-left font-medium">Tanggal</th>
                             <th class="px-4 py-3 text-center font-medium">Imsak</th>
                             <th class="px-4 py-3 text-center font-medium">Subuh</th>
+                            <th class="px-4 py-3 text-center font-medium">Terbit</th>
                             <th class="px-4 py-3 text-center font-medium">Dzuhur</th>
                             <th class="px-4 py-3 text-center font-medium">Ashar</th>
                             <th class="px-4 py-3 text-center font-medium">Maghrib</th>
@@ -61,6 +62,7 @@
                             </td>
                             <td class="px-4 py-3 text-center text-gray-600">{{ $prayer?->imsak ?? '-' }}</td>
                             <td class="px-4 py-3 text-center text-gray-600">{{ $prayer?->subuh ?? '-' }}</td>
+                            <td class="px-4 py-3 text-center text-gray-600">{{ $prayer?->terbit ?? '-' }}</td>
                             <td class="px-4 py-3 text-center text-gray-600">{{ $prayer?->dzuhur ?? '-' }}</td>
                             <td class="px-4 py-3 text-center text-gray-600">{{ $prayer?->ashar ?? '-' }}</td>
                             <td class="px-4 py-3 text-center text-gray-600">{{ $prayer?->maghrib ?? '-' }}</td>

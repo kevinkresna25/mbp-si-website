@@ -161,6 +161,7 @@ Email: info@masjidbukitpalma.or.id</p>',
         // Generate mock prayer times for the current month
         $baseTimings = [
             'subuh'   => '04:28',
+            'terbit'  => '05:32',
             'dzuhur'  => '11:38',
             'ashar'   => '14:58',
             'maghrib' => '17:42',
@@ -178,6 +179,7 @@ Email: info@masjidbukitpalma.or.id</p>',
                 ['tanggal' => $date->format('Y-m-d')],
                 [
                     'subuh'   => Carbon::createFromFormat('H:i', $baseTimings['subuh'])->addMinutes($minuteOffset)->format('H:i:s'),
+                    'terbit'  => Carbon::createFromFormat('H:i', $baseTimings['terbit'])->addMinutes($minuteOffset)->format('H:i:s'),
                     'dzuhur'  => Carbon::createFromFormat('H:i', $baseTimings['dzuhur'])->addMinutes($minuteOffset)->format('H:i:s'),
                     'ashar'   => Carbon::createFromFormat('H:i', $baseTimings['ashar'])->addMinutes($minuteOffset)->format('H:i:s'),
                     'maghrib' => Carbon::createFromFormat('H:i', $baseTimings['maghrib'])->addMinutes($minuteOffset)->format('H:i:s'),

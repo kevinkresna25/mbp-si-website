@@ -56,10 +56,11 @@
                 </div>
                 <span class="text-emerald-200 text-sm">{{ now()->translatedFormat('l, d F Y') }}</span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-gray-100">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 divide-x divide-gray-100">
                 @php
                     $prayers = [
                         'Subuh' => $prayerTime->subuh,
+                        'Terbit' => $prayerTime->terbit,
                         'Dzuhur' => $prayerTime->dzuhur,
                         'Ashar' => $prayerTime->ashar,
                         'Maghrib' => $prayerTime->maghrib,
@@ -70,7 +71,7 @@
                 <div class="p-4 text-center {{ $nextPrayer && $nextPrayer['name'] === $name ? 'bg-emerald-50 ring-2 ring-inset ring-emerald-200' : '' }}">
                     <p class="text-xs uppercase tracking-wider {{ $nextPrayer && $nextPrayer['name'] === $name ? 'text-emerald-700 font-bold' : 'text-gray-500' }}">{{ $name }}</p>
                     <p class="text-xl font-bold mt-1 {{ $nextPrayer && $nextPrayer['name'] === $name ? 'text-emerald-700' : 'text-gray-900' }}">
-                        {{ \Carbon\Carbon::createFromFormat('H:i:s', $time)->format('H:i') }}
+                        {{ $time ? \Carbon\Carbon::createFromFormat('H:i:s', $time)->format('H:i') : '-' }}
                     </p>
                     @if($nextPrayer && $nextPrayer['name'] === $name)
                     <span class="inline-block mt-1 px-2 py-0.5 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full">Selanjutnya</span>
