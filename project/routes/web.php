@@ -27,7 +27,7 @@ Route::get('/artikel', [ArtikelController::class, 'index'])->name('public.artike
 Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('public.artikel.show');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

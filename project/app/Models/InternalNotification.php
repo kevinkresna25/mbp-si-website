@@ -29,4 +29,28 @@ class InternalNotification extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Mark the notification as read.
+     */
+    public function markAsRead(): void
+    {
+        if (!$this->is_read) {
+            $this->update([
+                'is_read' => true,
+                'read_at' => now(),
+            ]);
+        }
+    }
+
+    /**
+     * Mark the notification as unread.
+     */
+    public function markAsUnread(): void
+    {
+        $this->update([
+            'is_read' => false,
+            'read_at' => null,
+        ]);
+    }
 }
