@@ -104,29 +104,46 @@ class PrayerTimeService
 
         $now = Carbon::now();
         $prayers = [
-            'Subuh'   => $today->subuh,
-            'Dzuhur'  => $today->dzuhur,
-            'Ashar'   => $today->ashar,
+            'Subuh' => $today->subuh,
+            'Dzuhur' => $today->dzuhur,
+            'Ashar' => $today->ashar,
             'Maghrib' => $today->maghrib,
-            'Isya'    => $today->isya,
+            'Isya' => $today->isya,
         ];
 
         foreach ($prayers as $name => $time) {
-            $prayerTime = Carbon::createFromFormat('H:i:s', $time);
+            try {
+                $prayerTime = Carbon::createFromFormat('H:i:s', $time);
+            }
+            catch (\Exception $e) {
+                try {
+                    $prayerTime = Carbon::createFromFormat('H:i', $time);
+                }
+                catch (\Exception $e) {
+                    continue;
+                }
+            }
 
             if ($now->lt($prayerTime)) {
                 return [
                     'name' => $name,
-                    'time' => Carbon::createFromFormat('H:i:s', $time)->format('H:i'),
+                    'time' => $prayerTime->format('H:i'),
                     'countdown' => $now->diff($prayerTime)->format('%H:%I:%S'),
                 ];
             }
         }
 
         // All prayers have passed; next is Subuh tomorrow
+        try {
+            $subuhTime = Carbon::createFromFormat('H:i:s', $today->subuh)->format('H:i');
+        }
+        catch (\Exception $e) {
+            $subuhTime = Carbon::createFromFormat('H:i', $today->subuh)->format('H:i');
+        }
+
         return [
             'name' => 'Subuh',
-            'time' => Carbon::createFromFormat('H:i:s', $today->subuh)->format('H:i'),
+            'time' => $subuhTime,
             'countdown' => 'Besok',
         ];
     }
@@ -153,13 +170,13 @@ class PrayerTimeService
     private function mapTimings(array $data): array
     {
         return [
-            'subuh'   => $this->normalizeTime($data['Fajr'] ?? null, '04:30:00'),
-            'terbit'  => isset($data['Sunrise']) ? $this->normalizeTime($data['Sunrise'], '05:30:00') : null,
-            'dzuhur'  => $this->normalizeTime($data['Dhuhr'] ?? null, '11:45:00'),
-            'ashar'   => $this->normalizeTime($data['Asr'] ?? null, '15:00:00'),
+            'subuh' => $this->normalizeTime($data['Fajr'] ?? null, '04:30:00'),
+            'terbit' => isset($data['Sunrise']) ? $this->normalizeTime($data['Sunrise'], '05:30:00') : null,
+            'dzuhur' => $this->normalizeTime($data['Dhuhr'] ?? null, '11:45:00'),
+            'ashar' => $this->normalizeTime($data['Asr'] ?? null, '15:00:00'),
             'maghrib' => $this->normalizeTime($data['Maghrib'] ?? null, '17:30:00'),
-            'isya'    => $this->normalizeTime($data['Isha'] ?? null, '18:45:00'),
-            'imsak'   => isset($data['Imsak']) ? $this->normalizeTime($data['Imsak'], '04:20:00') : null,
+            'isya' => $this->normalizeTime($data['Isha'] ?? null, '18:45:00'),
+            'imsak' => isset($data['Imsak']) ? $this->normalizeTime($data['Imsak'], '04:20:00') : null,
         ];
     }
 
@@ -170,15 +187,15 @@ class PrayerTimeService
     {
         try {
             $response = $this->http(10)->get(self::API_BASE . "/timingsByCity/{$date}", [
-                'city'    => 'Surabaya',
+                'city' => 'Surabaya',
                 'country' => 'Indonesia',
-                'method'  => 20, // Kemenag
+                'method' => 20, // Kemenag
             ]);
 
             if (!$response->successful()) {
                 Log::warning('Prayer time API returned non-success status', [
                     'status' => $response->status(),
-                    'date'   => $date,
+                    'date' => $date,
                 ]);
                 return null;
             }
@@ -192,13 +209,14 @@ class PrayerTimeService
             $tanggal = Carbon::createFromFormat('d-m-Y', $date)->format('Y-m-d');
 
             return PrayerTime::updateOrCreate(
-                ['tanggal' => $tanggal],
+            ['tanggal' => $tanggal],
                 $this->mapTimings($data)
             );
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             Log::error('Failed to fetch prayer times from API', [
                 'error' => $e->getMessage(),
-                'date'  => $date,
+                'date' => $date,
             ]);
             return null;
         }
@@ -211,16 +229,16 @@ class PrayerTimeService
     {
         try {
             $response = $this->http(15)->get(self::API_BASE . "/calendarByCity/{$year}/{$month}", [
-                'city'    => 'Surabaya',
+                'city' => 'Surabaya',
                 'country' => 'Indonesia',
-                'method'  => 20, // Kemenag
+                'method' => 20, // Kemenag
             ]);
 
             if (!$response->successful()) {
                 Log::warning('Prayer calendar API returned non-success status', [
                     'status' => $response->status(),
-                    'month'  => $month,
-                    'year'   => $year,
+                    'month' => $month,
+                    'year' => $year,
                 ]);
                 return [];
             }
@@ -244,7 +262,7 @@ class PrayerTimeService
                 $tanggal = Carbon::createFromFormat('d-m-Y', $dateStr)->format('Y-m-d');
 
                 $results[] = PrayerTime::updateOrCreate(
-                    ['tanggal' => $tanggal],
+                ['tanggal' => $tanggal],
                     $this->mapTimings($timings)
                 );
             }
@@ -256,11 +274,12 @@ class PrayerTimeService
             }
 
             return $results;
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             Log::error('Failed to fetch monthly prayer times from API', [
                 'error' => $e->getMessage(),
                 'month' => $month,
-                'year'  => $year,
+                'year' => $year,
             ]);
             return [];
         }

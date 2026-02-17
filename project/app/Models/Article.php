@@ -17,24 +17,16 @@ class Article extends Model
         'published_at' => 'datetime',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($article) {
-            if (empty($article->slug)) {
-                $article->slug = Str::slug($article->title);
-            }
-        });
-    }
+    // Slug generation is handled by ArticleController with uniqueness check
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(ArticleCategory::class, 'category_id');
+        return $this->belongsTo(ArticleCategory::class , 'category_id');
     }
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class , 'author_id');
     }
 
     public function scopePublished($query)

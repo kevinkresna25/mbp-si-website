@@ -31,27 +31,27 @@ class PembangunanFase extends Model implements HasMedia
 
     public function updater(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'updated_by');
+        return $this->belongsTo(User::class , 'updated_by');
     }
 
     public function getStatusLabelAttribute(): string
     {
         return match ($this->status) {
-            'not_started' => 'Belum Dimulai',
-            'in_progress' => 'Sedang Berjalan',
-            'completed' => 'Selesai',
-            default => $this->status,
-        };
+                'not_started' => 'Belum Dimulai',
+                'in_progress' => 'Sedang Berjalan',
+                'completed' => 'Selesai',
+                default => $this->status,
+            };
     }
 
     public function getStatusColorAttribute(): string
     {
         return match ($this->status) {
-            'not_started' => 'gray',
-            'in_progress' => 'yellow',
-            'completed' => 'green',
-            default => 'gray',
-        };
+                'not_started' => 'gray',
+                'in_progress' => 'yellow',
+                'completed' => 'green',
+                default => 'gray',
+            };
     }
 
     public function registerMediaConversions(?Media $media = null): void
@@ -73,12 +73,8 @@ class PembangunanFase extends Model implements HasMedia
 
     public static function getOverallProgress(): float
     {
-        $fases = self::all();
+        $avg = self::query()->avg('progress_persen');
 
-        if ($fases->isEmpty()) {
-            return 0;
-        }
-
-        return round($fases->avg('progress_persen'), 1);
+        return $avg ? round($avg, 1) : 0;
     }
 }

@@ -13,7 +13,7 @@ class DonationTarget extends Model
     ];
 
     protected $casts = [
-        'category_ziswaf' => CategoryZiswaf::class,
+        'category_ziswaf' => CategoryZiswaf::class ,
         'target_amount' => 'decimal:2',
         'current_amount' => 'decimal:2',
         'start_date' => 'date',
@@ -28,8 +28,10 @@ class DonationTarget extends Model
         return min(100, round(($this->current_amount / $this->target_amount) * 100, 1));
     }
 
+    public const STATUS_ACTIVE = 'active';
+
     public function scopeActive($query)
     {
-        return $query->where('status', 'active');
+        return $query->where('status', self::STATUS_ACTIVE);
     }
 }

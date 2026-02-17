@@ -24,25 +24,20 @@ class GoogleController extends Controller
                 ->first();
 
             if (!$user) {
-                $user = User::create([
-                    'name' => $googleUser->getName(),
-                    'email' => $googleUser->getEmail(),
-                    'google_id' => $googleUser->getId(),
-                    'avatar' => $googleUser->getAvatar(),
-                    'email_verified_at' => now(),
-                ]);
-            } else {
-                $user->update([
-                    'google_id' => $googleUser->getId(),
-                    'avatar' => $googleUser->getAvatar(),
-                ]);
+                return redirect('/login')->with('error', 'Akun Anda belum terdaftar di sistem. Silakan hubungi admin untuk mendaftarkan akun.');
             }
+
+            $user->update([
+                'google_id' => $googleUser->getId(),
+                'avatar' => $googleUser->getAvatar(),
+            ]);
 
             Auth::login($user);
 
             return redirect()->intended('/admin/dashboard');
 
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             return redirect('/login')->with('error', 'Google authentication failed: ' . $e->getMessage());
         }
     }

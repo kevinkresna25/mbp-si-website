@@ -1,6 +1,25 @@
 <x-admin-layout>
     <x-slot name="header">Edit Halaman: {{ $staticPage->title }}</x-slot>
 
+    {{-- Trix Editor Assets --}}
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.1.8/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.1.8/dist/trix.umd.min.js"></script>
+    <style>
+        trix-editor {
+            min-height: 300px;
+            border-radius: 0.5rem;
+            border-color: #d1d5db;
+        }
+        trix-editor:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        trix-toolbar .trix-button-group {
+            border-radius: 0.375rem;
+            border-color: #e5e7eb;
+        }
+    </style>
+
     <div class="max-w-3xl">
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <div class="mb-4 flex items-center space-x-2">
@@ -20,8 +39,8 @@
 
                     <div>
                         <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Konten <span class="text-red-500">*</span></label>
-                        <textarea name="content" id="content" rows="15" required class="w-full rounded-lg border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 font-mono text-sm">{{ old('content', $staticPage->content) }}</textarea>
-                        <p class="text-xs text-gray-400 mt-1">Anda dapat menggunakan HTML untuk memformat konten.</p>
+                        <input id="content" type="hidden" name="content" value="{{ old('content', $staticPage->content) }}">
+                        <trix-editor input="content" class="prose prose-sm max-w-none"></trix-editor>
                         @error('content') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
                 </div>
@@ -34,3 +53,4 @@
         </div>
     </div>
 </x-admin-layout>
+

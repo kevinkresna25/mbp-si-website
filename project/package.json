@@ -19,6 +19,8 @@
         "vite": "^7.0.7"
     },
     "dependencies": {
-        "@alpinejs/collapse": "^3.15.8"
+        "@alpinejs/collapse": "^3.15.8",
+        "@tsparticles/engine": "^3.9.1",
+        "@tsparticles/slim": "^3.9.1"
     }
 }

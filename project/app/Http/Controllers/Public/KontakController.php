@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactMessage;
+use App\Models\Struktur;
+use App\Models\SocialLink;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class KontakController extends Controller
 {
@@ -13,34 +16,17 @@ class KontakController extends Controller
      */
     public function index()
     {
-        $pengurus = [
-            [
-                'nama' => 'H. Sudirman',
-                'jabatan' => 'Ketua Takmir',
-                'wa' => '6281234567800',
-            ],
-            [
-                'nama' => 'Ir. Bambang Sutrisno',
-                'jabatan' => 'Wakil Ketua',
-                'wa' => '6281234567801',
-            ],
-            [
-                'nama' => 'Drs. Ahmad Syafii',
-                'jabatan' => 'Sekretaris',
-                'wa' => '6281234567802',
-            ],
-            [
-                'nama' => 'Hj. Siti Aisyah',
-                'jabatan' => 'Bendahara',
-                'wa' => '6281234567803',
-            ],
-        ];
+        $pengurus = Struktur::select('nama', 'jabatan', 'kontak')
+            ->orderBy('order_column')
+            ->get()
+            ->map(fn ($s) => [
+                'nama' => $s->nama,
+                'jabatan' => $s->jabatan,
+                'wa' => $s->kontak,
+            ])
+            ->toArray();
 
-        $socialMedia = [
-            ['platform' => 'Instagram', 'url' => 'https://instagram.com/masjidbukit.palma', 'handle' => '@masjidbukit.palma'],
-            ['platform' => 'YouTube', 'url' => 'https://youtube.com/@masjidbukit.palma', 'handle' => 'Masjid Bukit Palma'],
-            ['platform' => 'Facebook', 'url' => 'https://facebook.com/masjidbukit.palma', 'handle' => 'Masjid Bukit Palma'],
-        ];
+        $socialMedia = SocialLink::allActive();
 
         return view('public.kontak.index', compact('pengurus', 'socialMedia'));
     }
@@ -54,10 +40,26 @@ class KontakController extends Controller
             'nama' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'subject' => 'required|string|max:255',
-            'pesan' => 'required|string|max:5000',
-            // Turnstile validation placeholder
-            // 'cf-turnstile-response' => 'required',
+            'pesan' => 'required|string|min:20|max:5000',
+            'cf-turnstile-response' => 'required',
+        ], [
+            'pesan.min' => 'Pesan minimal 20 karakter.',
+            'cf-turnstile-response.required' => 'Verifikasi CAPTCHA diperlukan.',
         ]);
+
+        // Verify Turnstile token
+        $turnstileResponse = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+            'secret' => config('services.turnstile.secret_key'),
+            'response' => $request->input('cf-turnstile-response'),
+            'remoteip' => $request->ip(),
+        ]);
+
+        if (!$turnstileResponse->json('success')) {
+            return back()->withErrors(['cf-turnstile-response' => 'Verifikasi CAPTCHA gagal. Silakan coba lagi.'])->withInput();
+        }
+
+        // Remove turnstile field before creating
+        unset($validated['cf-turnstile-response']);
 
         ContactMessage::create($validated);
 

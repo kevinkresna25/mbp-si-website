@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\PrayerTime;
+use App\Models\StaticPage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,9 @@ class LayananController extends Controller
      */
     public function nikah()
     {
-        return view('public.layanan.nikah');
+        $page = StaticPage::where('key', 'layanan_nikah')->firstOrFail();
+
+        return view('public.layanan.nikah', compact('page'));
     }
 
     /**
@@ -84,6 +87,8 @@ class LayananController extends Controller
      */
     public function permohonan()
     {
-        return view('public.layanan.permohonan');
+        $page = StaticPage::where('key', 'layanan_permohonan')->firstOrFail();
+
+        return view('public.layanan.permohonan', compact('page'));
     }
 }

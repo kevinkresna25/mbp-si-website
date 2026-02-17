@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\StaticPage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PublicPagesTest extends TestCase
@@ -101,6 +102,7 @@ class PublicPagesTest extends TestCase
 
     public function test_layanan_nikah_loads(): void
     {
+        StaticPage::create(['key' => 'layanan_nikah', 'title' => 'Layanan Nikah', 'content' => '<p>Test</p>']);
         $response = $this->get('/layanan/nikah');
         $response->assertStatus(200);
     }
@@ -113,6 +115,7 @@ class PublicPagesTest extends TestCase
 
     public function test_layanan_permohonan_loads(): void
     {
+        StaticPage::create(['key' => 'layanan_permohonan', 'title' => 'Permohonan Fasilitas', 'content' => '<p>Test</p>']);
         $response = $this->get('/layanan/permohonan');
         $response->assertStatus(200);
     }

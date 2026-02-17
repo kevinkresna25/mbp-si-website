@@ -17,49 +17,50 @@ class DatabaseSeeder extends Seeder
 
         // 2. Create users (must exist before ContentSeeder & FinancialDataSeeder)
         $admin = User::firstOrCreate(
-            ['email' => 'admin@masjidbukitpalma.or.id'],
-            [
-                'name' => 'Administrator',
-                'email_verified_at' => now(),
-                'password' => bcrypt('password'),
-            ]
+        ['email' => 'admin@masjidbukitpalma.or.id'],
+        [
+            'name' => 'Administrator',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]
         );
         $admin->assignRole('admin');
 
         $bendahara = User::firstOrCreate(
-            ['email' => 'bendahara@masjidbukitpalma.or.id'],
-            [
-                'name' => 'Pak Ahmad (Bendahara)',
-                'email_verified_at' => now(),
-                'password' => bcrypt('password'),
-            ]
+        ['email' => 'bendahara@masjidbukitpalma.or.id'],
+        [
+            'name' => 'Pak Ahmad (Bendahara)',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]
         );
         $bendahara->assignRole('bendahara');
 
         $takmir = User::firstOrCreate(
-            ['email' => 'takmir@masjidbukitpalma.or.id'],
-            [
-                'name' => 'Pak Hasan (Takmir Inti)',
-                'email_verified_at' => now(),
-                'password' => bcrypt('password'),
-            ]
+        ['email' => 'takmir@masjidbukitpalma.or.id'],
+        [
+            'name' => 'Pak Hasan (Takmir Inti)',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]
         );
         $takmir->assignRole('takmir_inti');
 
         $media = User::firstOrCreate(
-            ['email' => 'media@masjidbukitpalma.or.id'],
-            [
-                'name' => 'Mas Cahyo (Media)',
-                'email_verified_at' => now(),
-                'password' => bcrypt('password'),
-            ]
+        ['email' => 'media@masjidbukitpalma.or.id'],
+        [
+            'name' => 'Mas Cahyo (Media)',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]
         );
         $media->assignRole('media');
 
         // 3. Seed content & financial data (depends on users existing)
         $this->call([
-            ContentSeeder::class,
-            FinancialDataSeeder::class,
+            ContentSeeder::class ,
+            SiteSettingSeeder::class ,
+            FinancialDataSeeder::class ,
         ]);
     }
 }

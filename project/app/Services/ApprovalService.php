@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class ApprovalService
 {
-    public function __construct(
-        private FinancialService $financialService
-    ) {}
+    public function __construct(private
+        FinancialService $financialService
+        )
+    {
+    }
 
     /**
      * Submit a transaction for approval.
@@ -21,7 +23,7 @@ class ApprovalService
         if (!$transaction->status->canTransitionTo(TransactionStatus::Submitted)) {
             throw new \InvalidArgumentException(
                 "Transaksi dengan status '{$transaction->status->label()}' tidak dapat disubmit untuk approval."
-            );
+                );
         }
 
         return DB::transaction(function () use ($transaction) {
@@ -47,7 +49,7 @@ class ApprovalService
         if (!$transaction->status->canTransitionTo(TransactionStatus::Approved)) {
             throw new \InvalidArgumentException(
                 "Transaksi dengan status '{$transaction->status->label()}' tidak dapat diapprove."
-            );
+                );
         }
 
         return DB::transaction(function () use ($transaction) {
@@ -78,7 +80,7 @@ class ApprovalService
         if (!$transaction->status->canTransitionTo(TransactionStatus::Rejected)) {
             throw new \InvalidArgumentException(
                 "Transaksi dengan status '{$transaction->status->label()}' tidak dapat ditolak."
-            );
+                );
         }
 
         return DB::transaction(function () use ($transaction, $reason) {
@@ -93,11 +95,14 @@ class ApprovalService
                 ->performedOn($transaction)
                 ->causedBy(Auth::user())
                 ->withProperties([
-                    'old_status' => 'submitted',
-                    'new_status' => 'rejected',
-                    'reason' => $reason,
-                ])
+                'old_status' => 'submitted',
+                'new_status' => 'rejected',
+                'reason' => $reason,
+            ])
                 ->log('Transaction rejected');
+
+            // Clear financial caches for consistency
+            $this->financialService->clearCache();
 
             return $transaction->fresh();
         });

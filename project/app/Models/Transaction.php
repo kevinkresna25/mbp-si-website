@@ -24,9 +24,9 @@ class Transaction extends Model
     protected $casts = [
         'tanggal' => 'date',
         'nominal' => 'decimal:2',
-        'type' => TransactionType::class,
-        'category_ziswaf' => CategoryZiswaf::class,
-        'status' => TransactionStatus::class,
+        'type' => TransactionType::class ,
+        'category_ziswaf' => CategoryZiswaf::class ,
+        'status' => TransactionStatus::class ,
         'approved_at' => 'datetime',
     ];
 
@@ -40,12 +40,12 @@ class Transaction extends Model
 
     public function creator(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class , 'created_by');
     }
 
     public function approver(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'approved_by');
+        return $this->belongsTo(User::class , 'approved_by');
     }
 
     public function scopeApproved($query)
@@ -85,9 +85,14 @@ class Transaction extends Model
 
     public static function generateTransactionCode(): string
     {
-        $date = now()->format('Ymd');
-        $lastTransaction = self::whereDate('created_at', now())->orderBy('id', 'desc')->first();
-        $sequence = $lastTransaction ? ((int) substr($lastTransaction->transaction_code, -3)) + 1 : 1;
-        return 'TRX-' . $date . '-' . str_pad($sequence, 3, '0', STR_PAD_LEFT);
+        return \Illuminate\Support\Facades\DB::transaction(function () {
+            $date = now()->format('Ymd');
+            $lastTransaction = self::whereDate('created_at', now())
+                ->lockForUpdate()
+                ->orderBy('id', 'desc')
+                ->first();
+            $sequence = $lastTransaction ? ((int)substr($lastTransaction->transaction_code, -3)) + 1 : 1;
+            return 'TRX-' . $date . '-' . str_pad($sequence, 3, '0', STR_PAD_LEFT);
+        });
     }
 }

@@ -1,116 +1,103 @@
 <x-public-layout>
-    <x-slot name="title">Panduan Sholat - Belajar Islam</x-slot>
+    <x-page-header title="Panduan Sholat" subtitle="Tata cara sholat yang benar disertai bacaan Arab, Latin, dan artinya" breadcrumb="Belajar Islam / Sholat" />
 
-    {{-- Hero Section --}}
-    <section class="bg-gradient-to-br from-emerald-700 via-emerald-800 to-emerald-900 text-white py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center px-4 py-1.5 bg-emerald-600/50 rounded-full text-sm text-emerald-100 mb-6">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                Belajar Islam
-            </div>
-            <h1 class="text-3xl md:text-5xl font-bold mb-4">Panduan Sholat</h1>
-            <p class="text-emerald-100 text-lg max-w-2xl mx-auto leading-relaxed">
-                Langkah demi langkah tata cara sholat yang benar disertai bacaan Arab, transliterasi Latin, dan artinya dalam Bahasa Indonesia.
-            </p>
-        </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {{-- Introduction --}}
-        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-10">
-            <div class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <div>
-                    <p class="text-sm font-semibold text-emerald-800 mb-1">Catatan Penting</p>
-                    <p class="text-sm text-emerald-700">Panduan ini menampilkan tata cara sholat fardhu secara umum. Untuk sholat yang berbeda jumlah rakaatnya, sesuaikan niat dan jumlah rakaat. Dianjurkan untuk belajar langsung dengan ustadz atau guru mengaji.</p>
-                </div>
-            </div>
-        </div>
-
-        {{-- Steps --}}
-        <div class="space-y-6">
-            @foreach($steps as $step)
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden" id="step-{{ $step['no'] }}">
-                {{-- Step Header --}}
-                <div class="flex items-center px-6 py-4 bg-gray-50 border-b border-gray-200">
-                    <span class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 text-white font-bold text-lg flex-shrink-0">
-                        {{ $step['no'] }}
-                    </span>
-                    <h3 class="ml-4 text-lg font-bold text-gray-900">{{ $step['nama'] }}</h3>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <x-bento.grid>
+            {{-- Content --}}
+            <x-bento.item span="2" class="space-y-8">
+                {{-- Introduction --}}
+                <div class="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-500/30 rounded-2xl p-6 flex items-start gap-4">
+                    <div class="p-2 bg-emerald-100 dark:bg-emerald-800 rounded-lg shrink-0 text-emerald-600 dark:text-emerald-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-emerald-900 dark:text-emerald-100 mb-1">Catatan Penting</h3>
+                        <p class="text-sm text-emerald-800 dark:text-emerald-200 leading-relaxed">Panduan ini menampilkan tata cara sholat fardhu secara umum. Untuk sholat yang berbeda jumlah rakaatnya, sesuaikan niat dan jumlah rakaat. Dianjurkan untuk belajar langsung dengan ustadz atau guru mengaji.</p>
+                    </div>
                 </div>
 
-                <div class="p-6 space-y-5">
-                    {{-- Arabic Text --}}
-                    <div class="bg-gray-50 rounded-xl p-5 text-center">
-                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Bacaan Arab</p>
-                        <p class="font-arabic text-2xl md:text-3xl leading-[2] text-gray-900 whitespace-pre-line" dir="rtl">{{ $step['arabic'] }}</p>
-                    </div>
+                <div class="space-y-8">
+                     @foreach($steps as $step)
+                     <div class="bg-white dark:bg-slate-700/30 rounded-2xl border border-gray-100 dark:border-white/5 overflow-hidden scroll-mt-24" id="step-{{ $step['no'] }}">
+                        <div class="bg-gray-50 dark:bg-slate-700/50 px-6 py-4 flex items-center gap-4 border-b border-gray-100 dark:border-white/5">
+                             <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
+                                 {{ $step['no'] }}
+                             </div>
+                             <h3 class="font-bold text-gray-900 dark:text-white text-lg">{{ $step['nama'] }}</h3>
+                        </div>
+                        <div class="p-6 space-y-6">
+                            {{-- Arabic --}}
+                            <div class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 text-center border border-gray-100 dark:border-white/5">
+                                 <p class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Bacaan Arab</p>
+                                 <p class="font-arabic text-3xl md:text-4xl leading-[2] text-gray-900 dark:text-white whitespace-pre-line" dir="rtl">{{ $step['arabic'] }}</p>
+                            </div>
 
-                    {{-- Latin Transliteration --}}
-                    <div class="bg-emerald-50 rounded-xl p-5">
-                        <p class="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-2">Transliterasi Latin</p>
-                        <p class="text-base md:text-lg text-emerald-900 italic leading-relaxed">{{ $step['latin'] }}</p>
-                    </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {{-- Latin --}}
+                                <div class="bg-emerald-50 dark:bg-emerald-900/10 rounded-xl p-5 border border-emerald-100 dark:border-emerald-500/20">
+                                    <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">Transliterasi Latin</p>
+                                     <p class="text-lg text-emerald-900 dark:text-emerald-100 italic leading-relaxed">{{ $step['latin'] }}</p>
+                                </div>
+                                {{-- Meaning --}}
+                                <div class="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-5 border border-amber-100 dark:border-amber-500/20">
+                                     <p class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-2">Arti</p>
+                                     <p class="text-amber-900 dark:text-amber-100 leading-relaxed">{{ $step['arti'] }}</p>
+                                </div>
+                            </div>
 
-                    {{-- Indonesian Meaning --}}
-                    <div class="bg-amber-50 rounded-xl p-5">
-                        <p class="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-2">Arti</p>
-                        <p class="text-base text-amber-900 leading-relaxed">{{ $step['arti'] }}</p>
-                    </div>
-
-                    {{-- Notes --}}
-                    @if(!empty($step['catatan']))
-                    <div class="flex items-start space-x-3 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <p>{{ $step['catatan'] }}</p>
-                    </div>
-                    @endif
+                             @if(!empty($step['catatan']))
+                             <div class="flex items-start gap-3 p-4 bg-blue-50 dark:bg-blue-900/10 rounded-xl text-sm text-blue-900 dark:text-blue-100">
+                                 <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                 <p>{{ $step['catatan'] }}</p>
+                             </div>
+                             @endif
+                        </div>
+                     </div>
+                     @endforeach
                 </div>
-            </div>
-            @endforeach
-        </div>
+            </x-bento.item>
 
-        {{-- Quick Navigation --}}
-        <div class="mt-10 bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-            <h3 class="text-base font-bold text-gray-900 mb-4">Navigasi Cepat</h3>
-            <div class="flex flex-wrap gap-2">
-                @foreach($steps as $step)
-                <a href="#step-{{ $step['no'] }}" class="inline-flex items-center px-3 py-1.5 bg-emerald-50 text-emerald-700 text-sm rounded-lg hover:bg-emerald-100 transition">
-                    <span class="font-semibold mr-1.5">{{ $step['no'] }}.</span>
-                    {{ $step['nama'] }}
-                </a>
-                @endforeach
-            </div>
-        </div>
+            {{-- Sidebar --}}
+            <div class="space-y-6">
+                <x-sidebar-menu title="Belajar Islam" :links="[
+                    ['label' => 'Syahadat & Iman', 'url' => '/belajar-islam/syahadat', 'color' => 'bg-emerald-500'],
+                    ['label' => 'Panduan Sholat', 'url' => '/belajar-islam/sholat', 'color' => 'bg-blue-500'],
+                    ['label' => 'Kelas Mengaji', 'url' => '/belajar-islam/mengaji', 'color' => 'bg-purple-500'],
+                ]" />
 
-        {{-- Video Tutorial --}}
-        <div class="mt-10 bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-4">Video Tutorial Sholat</h2>
-            <p class="text-gray-600 mb-6">Lihat panduan visual tata cara sholat yang benar melalui video berikut:</p>
-            <div class="aspect-video rounded-xl overflow-hidden bg-gray-100">
-                <iframe
-                    class="w-full h-full"
-                    src="https://www.youtube.com/embed/T4auGhmeBlw"
-                    title="Tutorial Tata Cara Sholat yang Benar"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                ></iframe>
-            </div>
-            <p class="text-xs text-gray-400 mt-3 text-center">Video tutorial sholat dari sumber terpercaya</p>
-        </div>
+                {{-- Quick Nav --}}
+                <x-bento.item>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-4">Urutan Sholat</h3>
+                    <div class="flex flex-wrap gap-2">
+                         @foreach($steps as $step)
+                         <a href="#step-{{ $step['no'] }}" class="px-3 py-1.5 bg-gray-100 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-600 text-gray-600 dark:text-gray-300 rounded-lg text-xs font-medium transition duration-300">
+                             {{ $step['no'] }}. {{ Str::limit($step['nama'], 15) }}
+                         </a>
+                         @endforeach
+                    </div>
+                </x-bento.item>
 
-        {{-- Navigation --}}
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8">
-            <a href="{{ route('belajar-islam.syahadat') }}" class="inline-flex items-center text-gray-600 hover:text-emerald-600 transition text-sm">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                Kembali: Syahadat
-            </a>
-            <a href="{{ route('belajar-islam.mengaji') }}" class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition text-sm">
-                Lanjut: Kelas Mengaji
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
-        </div>
+                {{-- Video --}}
+                <x-bento.item class="!p-0 overflow-hidden">
+                    <div class="p-4 border-b border-gray-100 dark:border-white/5">
+                        <h3 class="font-bold text-gray-900 dark:text-white">Video Tutorial</h3>
+                    </div>
+                    <div class="aspect-video bg-black">
+                        <iframe
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/T4auGhmeBlw"
+                            title="Tutorial Sholat"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy"
+                        ></iframe>
+                    </div>
+                    <div class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">
+                        Sumber: YouTube (External)
+                    </div>
+                </x-bento.item>
+            </div>
+        </x-bento.grid>
     </section>
 </x-public-layout>

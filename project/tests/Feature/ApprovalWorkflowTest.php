@@ -31,32 +31,6 @@ class ApprovalWorkflowTest extends TestCase
         Role::create(['name' => 'takmir_inti', 'guard_name' => 'web']);
         Role::create(['name' => 'media', 'guard_name' => 'web']);
         Role::create(['name' => 'jamaah', 'guard_name' => 'web']);
-
-        // Create permissions
-        $permissions = [
-            'manage transactions', 'approve transactions', 'view transactions',
-            'manage articles', 'manage galleries', 'manage kegiatan',
-            'manage pembangunan', 'manage pengumuman', 'manage struktur',
-            'manage users', 'view audit log',
-        ];
-
-        foreach ($permissions as $permission) {
-            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'web']);
-        }
-
-        Role::findByName('admin')->givePermissionTo(Permission::all());
-        Role::findByName('takmir_inti')->givePermissionTo([
-            'approve transactions', 'view transactions',
-            'manage articles', 'manage galleries', 'manage kegiatan',
-            'manage pembangunan', 'manage pengumuman', 'manage struktur',
-            'view audit log',
-        ]);
-        Role::findByName('bendahara')->givePermissionTo([
-            'manage transactions', 'view transactions',
-        ]);
-        Role::findByName('media')->givePermissionTo([
-            'manage articles', 'manage galleries', 'manage kegiatan',
-        ]);
     }
 
     public function test_bendahara_can_access_create_transaction_page(): void

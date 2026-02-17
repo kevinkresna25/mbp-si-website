@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
+use App\Models\StaticPage;
 
 class BelajarIslamController extends Controller
 {
