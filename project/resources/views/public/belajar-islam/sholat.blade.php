@@ -24,12 +24,12 @@
                 <div class="space-y-8">
                      @foreach($steps as $step)
                      <div class="bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 overflow-hidden scroll-mt-32 shadow-xl shadow-gray-200/50 dark:shadow-none hover:shadow-2xl transition duration-500 group" id="step-{{ $step['no'] }}">
-                        <div class="bg-gray-50 dark:bg-slate-800/50 px-6 py-5 flex items-center gap-4 border-b border-emerald-200 dark:border-emerald-500/20 relative">
-                             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition duration-300">
+                        <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 py-4 flex items-center gap-4 relative overflow-hidden">
+                             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 pointer-events-none"></div>
+                             <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white font-bold text-lg shadow-inner border border-white/10 group-hover:scale-110 transition duration-300">
                                  {{ $step['no'] }}
                              </div>
-                             <h3 class="font-bold text-gray-900 dark:text-white text-xl">{{ $step['nama'] }}</h3>
-                             <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 dark:from-slate-800/50 to-transparent pointer-events-none"></div>
+                             <h3 class="font-bold text-white text-xl tracking-tight relative z-10">{{ $step['nama'] }}</h3>
                         </div>
                         <div class="p-8 space-y-8">
                             {{-- Arabic --}}
