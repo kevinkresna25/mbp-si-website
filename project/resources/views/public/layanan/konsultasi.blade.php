@@ -28,7 +28,7 @@
                 {{-- Ustadz Grid --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @foreach($ustadzList as $ustadz)
-                    <div class="bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-white/5 p-6 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col items-center text-center group relative overflow-hidden">
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 p-6 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col items-center text-center group relative overflow-hidden">
                         {{-- Hover Gradient --}}
                         <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 transform scale-x-0 group-hover:scale-x-100 transition duration-500 origin-left"></div>
                         
@@ -44,7 +44,7 @@
                             {{ $ustadz['bidang'] }}
                         </span>
                         
-                        <div class="w-full bg-gray-50 dark:bg-slate-700/30 rounded-2xl p-4 mb-6 border border-gray-100 dark:border-white/5">
+                        <div class="w-full bg-gray-50 dark:bg-slate-700/30 rounded-2xl p-4 mb-6 border border-emerald-200 dark:border-emerald-500/20">
                             <div class="flex items-center justify-center gap-2 mb-1 text-gray-400 dark:text-gray-500">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 <span class="text-xs font-bold uppercase tracking-wider">Jadwal</span>
@@ -62,13 +62,13 @@
                 </div>
                 
                  {{-- Bidang Info --}}
-                <div class="bg-gray-50 dark:bg-slate-800/50 rounded-3xl p-8 border border-gray-100 dark:border-white/5">
+                <div class="bg-gray-50 dark:bg-slate-800/50 rounded-3xl p-8 border border-emerald-200 dark:border-emerald-500/20">
                      <h3 class="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                         <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                         Topik Konsultasi Populer
                     </h3>
                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                         <div class="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-700/50 rounded-2xl border border-gray-100 dark:border-white/5 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition shadow-sm">
+                         <div class="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-700/50 rounded-2xl border border-emerald-200 dark:border-emerald-500/20 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition shadow-sm">
                              <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center flex-shrink-0 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition">
                                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                              </div>
@@ -77,7 +77,7 @@
                                  <span class="text-xs text-gray-500 dark:text-gray-400">Tata cara salat, puasa, zakat</span>
                              </div>
                          </div>
-                         <div class="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-700/50 rounded-2xl border border-gray-100 dark:border-white/5 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition shadow-sm">
+                         <div class="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-700/50 rounded-2xl border border-emerald-200 dark:border-emerald-500/20 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition shadow-sm">
                              <div class="w-12 h-12 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center flex-shrink-0 text-pink-600 dark:text-pink-400 group-hover:scale-110 transition">
                                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                              </div>
@@ -86,7 +86,7 @@
                                  <span class="text-xs text-gray-500 dark:text-gray-400">Pernikahan & parenting</span>
                              </div>
                          </div>
-                         <div class="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-700/50 rounded-2xl border border-gray-100 dark:border-white/5 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition shadow-sm">
+                         <div class="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-700/50 rounded-2xl border border-emerald-200 dark:border-emerald-500/20 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition shadow-sm">
                              <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center flex-shrink-0 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition">
                                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                              </div>
@@ -95,7 +95,7 @@
                                  <span class="text-xs text-gray-500 dark:text-gray-400">Hukum jual beli & bisnis</span>
                              </div>
                          </div>
-                         <div class="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-700/50 rounded-2xl border border-gray-100 dark:border-white/5 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition shadow-sm">
+                         <div class="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-700/50 rounded-2xl border border-emerald-200 dark:border-emerald-500/20 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition shadow-sm">
                              <div class="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center flex-shrink-0 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition">
                                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.2-2.858.5-4.193"/></svg>
                              </div>
@@ -110,7 +110,7 @@
 
             {{-- Sidebar (Menu Layanan) --}}
             <div class="space-y-6">
-                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-white/5 sticky top-24">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 sticky top-24">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                         <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
                         Layanan Lainnya

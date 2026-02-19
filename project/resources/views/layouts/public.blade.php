@@ -22,9 +22,9 @@
     <nav class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent"
          x-data="{ mobileOpen: false, scrolled: false }"
          @scroll.window="scrolled = (window.scrollY > 20)"
-         :class="scrolled ? 'pt-4 px-4' : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-emerald-500/30'">
+         :class="scrolled ? 'pt-4 px-4' : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-emerald-200 dark:border-emerald-500/30'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300"
-             :class="scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-lg rounded-2xl border border-gray-200/50 dark:border-emerald-500/50 shadow-emerald-500/10 py-2' : ''">
+             :class="scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-lg rounded-2xl border border-emerald-200 dark:border-emerald-500/50 shadow-emerald-500/10 py-2' : ''">
             <div class="flex justify-between h-16">
                 {{-- Logo --}}
                 <div class="flex items-center">

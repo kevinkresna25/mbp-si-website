@@ -10,7 +10,7 @@
             {{-- Content --}}
             <div class="lg:col-span-2 space-y-8">
                 {{-- Month Navigation --}}
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-lg shadow-emerald-900/5 border border-gray-100 dark:border-white/5 relative overflow-hidden group">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-lg shadow-emerald-900/5 border border-emerald-200 dark:border-emerald-500/20 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
                     
                     <a wire:navigate href="{{ route('public.layanan.jadwal-salat', ['year' => $prevMonth->year, 'month' => $prevMonth->month]) }}"
@@ -31,7 +31,7 @@
                 </div>
 
                 {{-- Prayer Times Table --}}
-                <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-white/5 overflow-hidden">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm">
                             <thead>
@@ -100,7 +100,7 @@
 
             {{-- Sidebar (Menu Layanan) --}}
             <div class="space-y-6">
-                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-white/5 sticky top-24">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 sticky top-24">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                         <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
                         Layanan Lainnya

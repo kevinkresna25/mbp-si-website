@@ -23,8 +23,8 @@
 
                 <div class="space-y-8">
                      @foreach($steps as $step)
-                     <div class="bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-white/5 overflow-hidden scroll-mt-32 shadow-xl shadow-gray-200/50 dark:shadow-none hover:shadow-2xl transition duration-500 group" id="step-{{ $step['no'] }}">
-                        <div class="bg-gray-50 dark:bg-slate-800/50 px-6 py-5 flex items-center gap-4 border-b border-gray-100 dark:border-white/5 relative">
+                     <div class="bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 overflow-hidden scroll-mt-32 shadow-xl shadow-gray-200/50 dark:shadow-none hover:shadow-2xl transition duration-500 group" id="step-{{ $step['no'] }}">
+                        <div class="bg-gray-50 dark:bg-slate-800/50 px-6 py-5 flex items-center gap-4 border-b border-emerald-200 dark:border-emerald-500/20 relative">
                              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition duration-300">
                                  {{ $step['no'] }}
                              </div>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="p-8 space-y-8">
                             {{-- Arabic --}}
-                            <div class="bg-white dark:bg-slate-700/30 rounded-2xl p-8 text-center border border-gray-100 dark:border-white/5 shadow-sm relative overflow-hidden group-hover:border-emerald-500/30 transition duration-500">
+                            <div class="bg-white dark:bg-slate-700/30 rounded-2xl p-8 text-center border border-emerald-200 dark:border-emerald-500/20 shadow-sm relative overflow-hidden group-hover:border-emerald-500/30 transition duration-500">
                                  <div class="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition duration-500"></div>
                                  <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-6 relative z-10">Bacaan Arab</p>
                                  <p class="font-arabic text-4xl md:text-5xl leading-[2.2] text-gray-900 dark:text-white whitespace-pre-line relative z-10 drop-shadow-sm" dir="rtl">{{ $step['arabic'] }}</p>
@@ -66,7 +66,7 @@
 
              {{-- Sidebar --}}
              <div class="space-y-8">
-                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-white/5 sticky top-24">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 sticky top-24">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                          <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                         Belajar Islam
@@ -90,11 +90,11 @@
                     </nav>
 
                     {{-- Quick Nav --}}
-                    <div class="mt-8 pt-8 border-t border-gray-100 dark:border-white/5">
+                    <div class="mt-8 pt-8 border-t border-emerald-200 dark:border-emerald-500/20">
                         <h3 class="font-bold text-gray-900 dark:text-white mb-4 text-sm uppercase tracking-wider">Urutan Sholat</h3>
                         <div class="flex flex-wrap gap-2">
                              @foreach($steps as $step)
-                             <a href="#step-{{ $step['no'] }}" class="px-3 py-1.5 bg-gray-50 dark:bg-slate-700/50 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-600 text-gray-600 dark:text-gray-400 rounded-lg text-xs font-medium transition duration-300 border border-gray-100 dark:border-white/5">
+                             <a href="#step-{{ $step['no'] }}" class="px-3 py-1.5 bg-gray-50 dark:bg-slate-700/50 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-600 text-gray-600 dark:text-gray-400 rounded-lg text-xs font-medium transition duration-300 border border-emerald-200 dark:border-emerald-500/20">
                                  {{ $step['no'] }}. {{ Str::limit($step['nama'], 15) }}
                              </a>
                              @endforeach

@@ -9,7 +9,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
              {{-- Content --}}
              <div class="lg:col-span-2 space-y-8">
-                 <div class="bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-white/5 p-8 shadow-xl shadow-gray-200/50 dark:shadow-none relative overflow-hidden">
+                 <div class="bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 p-8 shadow-xl shadow-gray-200/50 dark:shadow-none relative overflow-hidden">
                      <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-500/5 rounded-full blur-2xl -z-10"></div>
                      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed font-serif italic text-center">
                          "Sebaik-baik kalian adalah orang yang belajar Al-Quran dan mengajarkannya."
@@ -53,7 +53,7 @@
                         $c = $colorMap[$kelas['color']] ?? $colorMap['emerald'];
                     @endphp
                     
-                    <div class="bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-white/5 overflow-hidden flex flex-col md:flex-row hover:shadow-2xl transition duration-500 group">
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 overflow-hidden flex flex-col md:flex-row hover:shadow-2xl transition duration-500 group">
                         {{-- Icon Section --}}
                         <div class="md:w-1/3 bg-gradient-to-br {{ $c['gradient'] }} p-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
                             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 pointer-events-none"></div>
@@ -114,7 +114,7 @@
 
              {{-- Sidebar --}}
              <div class="space-y-8">
-                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-white/5 sticky top-24">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 sticky top-24">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                          <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                         Belajar Islam
@@ -137,7 +137,7 @@
                         </a>
                     </nav>
 
-                    <div class="mt-8 pt-8 border-t border-gray-100 dark:border-white/5">
+                    <div class="mt-8 pt-8 border-t border-emerald-200 dark:border-emerald-500/20">
                         <x-bento.item class="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white !border-0 text-center !p-6 !rounded-2xl">
                             <h3 class="font-bold text-lg mb-2">Mari Belajar Bersama</h3>
                             <p class="text-sm text-emerald-100 mb-4 opacity-90 leading-relaxed">Ilmu adalah cahaya yang menerangi jalan menuju kebaikan dunia dan akhirat.</p>

@@ -11,7 +11,7 @@
              <div class="lg:col-span-2 space-y-8">
                  <div class="space-y-8">
                      {{-- Syahadat 1 --}}
-                     <div class="bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-white/5 overflow-hidden shadow-xl shadow-gray-200/50 dark:shadow-none hover:shadow-2xl transition duration-300 group">
+                     <div class="bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 overflow-hidden shadow-xl shadow-gray-200/50 dark:shadow-none hover:shadow-2xl transition duration-300 group">
                          <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 py-4 flex items-center gap-4 relative overflow-hidden">
                              <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 pointer-events-none"></div>
                              <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white font-bold text-lg shadow-inner border border-white/10">1</div>
@@ -25,7 +25,7 @@
                                  <p class="text-xl md:text-3xl font-serif italic text-emerald-600 dark:text-emerald-400 mb-3 tracking-wide">Asyhadu an laa ilaaha illallah</p>
                                  <p class="text-gray-600 dark:text-gray-300 text-lg">"Aku bersaksi bahwa tiada Tuhan (yang berhak disembah) selain Allah"</p>
                              </div>
-                             <div class="text-left bg-gray-50 dark:bg-slate-700/30 p-6 rounded-2xl text-base leading-relaxed text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-white/5 flex gap-4">
+                             <div class="text-left bg-gray-50 dark:bg-slate-700/30 p-6 rounded-2xl text-base leading-relaxed text-gray-700 dark:text-gray-300 border border-emerald-200 dark:border-emerald-500/20 flex gap-4">
                                  <svg class="w-6 h-6 text-emerald-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                  <span><strong>Penjelasan:</strong> Pengakuan bahwa hanya Allah SWT satu-satunya Tuhan yang berhak disembah. Tidak ada sekutu bagi-Nya. Ini adalah inti ajaran tauhid yang mutlak.</span>
                              </div>
@@ -33,7 +33,7 @@
                      </div>
 
                      {{-- Syahadat 2 --}}
-                     <div class="bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-white/5 overflow-hidden shadow-xl shadow-gray-200/50 dark:shadow-none hover:shadow-2xl transition duration-300 group">
+                     <div class="bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 overflow-hidden shadow-xl shadow-gray-200/50 dark:shadow-none hover:shadow-2xl transition duration-300 group">
                          <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 py-4 flex items-center gap-4 relative overflow-hidden">
                              <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 pointer-events-none"></div>
                              <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white font-bold text-lg shadow-inner border border-white/10">2</div>
@@ -47,7 +47,7 @@
                                  <p class="text-xl md:text-3xl font-serif italic text-emerald-600 dark:text-emerald-400 mb-3 tracking-wide">Wa asyhadu anna Muhammadan rasuulullah</p>
                                  <p class="text-gray-600 dark:text-gray-300 text-lg">"Dan aku bersaksi bahwa Muhammad adalah utusan Allah"</p>
                              </div>
-                             <div class="text-left bg-gray-50 dark:bg-slate-700/30 p-6 rounded-2xl text-base leading-relaxed text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-white/5 flex gap-4">
+                             <div class="text-left bg-gray-50 dark:bg-slate-700/30 p-6 rounded-2xl text-base leading-relaxed text-gray-700 dark:text-gray-300 border border-emerald-200 dark:border-emerald-500/20 flex gap-4">
                                  <svg class="w-6 h-6 text-emerald-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                  <span><strong>Penjelasan:</strong> Pengakuan bahwa Nabi Muhammad SAW adalah utusan Allah yang terakhir. Konsekuensinya adalah kesediaan untuk mengikuti ajaran dan sunnah beliau.</span>
                              </div>
@@ -56,7 +56,7 @@
                  </div>
 
                  {{-- Significance --}}
-                 <div class="bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 rounded-3xl border border-gray-100 dark:border-white/5 p-8 relative overflow-hidden">
+                 <div class="bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 p-8 relative overflow-hidden">
                      <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
                      
                      <h3 class="font-bold text-gray-900 dark:text-white text-2xl mb-8 text-center flex items-center justify-center gap-3">
@@ -90,7 +90,7 @@
 
              {{-- Sidebar --}}
              <div class="space-y-6">
-                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-white/5 sticky top-24">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 sticky top-24">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                         <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                         Belajar Islam

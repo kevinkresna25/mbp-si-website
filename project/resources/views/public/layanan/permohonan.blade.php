@@ -9,7 +9,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
              {{-- Content --}}
              <div class="lg:col-span-2 space-y-8">
-                <div class="bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-white/5 p-8 shadow-xl shadow-gray-200/50 dark:shadow-none">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 p-8 shadow-xl shadow-gray-200/50 dark:shadow-none">
                     <div class="prose prose-lg prose-emerald dark:prose-invert max-w-none">
                         {!! $page->content !!}
                     </div>
