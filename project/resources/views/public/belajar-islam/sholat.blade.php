@@ -1,103 +1,109 @@
 <x-public-layout>
     <x-page-header title="Panduan Sholat" subtitle="Tata cara sholat yang benar disertai bacaan Arab, Latin, dan artinya" breadcrumb="Belajar Islam / Sholat" />
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <x-bento.grid>
-            {{-- Content --}}
-            <x-bento.item span="2" class="space-y-8">
-                {{-- Introduction --}}
-                <div class="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-500/30 rounded-2xl p-6 flex items-start gap-4">
-                    <div class="p-2 bg-emerald-100 dark:bg-emerald-800 rounded-lg shrink-0 text-emerald-600 dark:text-emerald-100">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative">
+        {{-- Background Decoration --}}
+        <div class="absolute top-40 left-0 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-40 right-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+             {{-- Content --}}
+             <div class="lg:col-span-2 space-y-8">
+                 {{-- Introduction --}}
+                <div class="bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-slate-800 border border-emerald-100 dark:border-emerald-500/20 rounded-3xl p-6 flex items-start gap-4 shadow-sm relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-5 pointer-events-none"></div>
+                    <div class="p-3 bg-emerald-100 dark:bg-emerald-800/50 rounded-2xl shrink-0 text-emerald-600 dark:text-emerald-300 shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-emerald-900 dark:text-emerald-100 mb-1">Catatan Penting</h3>
-                        <p class="text-sm text-emerald-800 dark:text-emerald-200 leading-relaxed">Panduan ini menampilkan tata cara sholat fardhu secara umum. Untuk sholat yang berbeda jumlah rakaatnya, sesuaikan niat dan jumlah rakaat. Dianjurkan untuk belajar langsung dengan ustadz atau guru mengaji.</p>
+                    <div class="relative z-10">
+                        <h3 class="font-bold text-emerald-900 dark:text-emerald-100 mb-2 text-lg">Catatan Penting</h3>
+                        <p class="text-emerald-800 dark:text-emerald-200 leading-relaxed text-sm">Panduan ini menampilkan tata cara sholat fardhu secara umum. Untuk sholat yang berbeda jumlah rakaatnya, sesuaikan niat dan jumlah rakaat. Dianjurkan untuk belajar langsung dengan ustadz atau guru mengaji.</p>
                     </div>
                 </div>
 
                 <div class="space-y-8">
                      @foreach($steps as $step)
-                     <div class="bg-white dark:bg-slate-700/30 rounded-2xl border border-gray-100 dark:border-white/5 overflow-hidden scroll-mt-24" id="step-{{ $step['no'] }}">
-                        <div class="bg-gray-50 dark:bg-slate-700/50 px-6 py-4 flex items-center gap-4 border-b border-gray-100 dark:border-white/5">
-                             <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
+                     <div class="bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-white/5 overflow-hidden scroll-mt-32 shadow-xl shadow-gray-200/50 dark:shadow-none hover:shadow-2xl transition duration-500 group" id="step-{{ $step['no'] }}">
+                        <div class="bg-gray-50 dark:bg-slate-800/50 px-6 py-5 flex items-center gap-4 border-b border-gray-100 dark:border-white/5 relative">
+                             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition duration-300">
                                  {{ $step['no'] }}
                              </div>
-                             <h3 class="font-bold text-gray-900 dark:text-white text-lg">{{ $step['nama'] }}</h3>
+                             <h3 class="font-bold text-gray-900 dark:text-white text-xl">{{ $step['nama'] }}</h3>
+                             <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 dark:from-slate-800/50 to-transparent pointer-events-none"></div>
                         </div>
-                        <div class="p-6 space-y-6">
+                        <div class="p-8 space-y-8">
                             {{-- Arabic --}}
-                            <div class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 text-center border border-gray-100 dark:border-white/5">
-                                 <p class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Bacaan Arab</p>
-                                 <p class="font-arabic text-3xl md:text-4xl leading-[2] text-gray-900 dark:text-white whitespace-pre-line" dir="rtl">{{ $step['arabic'] }}</p>
+                            <div class="bg-white dark:bg-slate-700/30 rounded-2xl p-8 text-center border border-gray-100 dark:border-white/5 shadow-sm relative overflow-hidden group-hover:border-emerald-500/30 transition duration-500">
+                                 <div class="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                                 <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-6 relative z-10">Bacaan Arab</p>
+                                 <p class="font-arabic text-4xl md:text-5xl leading-[2.2] text-gray-900 dark:text-white whitespace-pre-line relative z-10 drop-shadow-sm" dir="rtl">{{ $step['arabic'] }}</p>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {{-- Latin --}}
-                                <div class="bg-emerald-50 dark:bg-emerald-900/10 rounded-xl p-5 border border-emerald-100 dark:border-emerald-500/20">
-                                    <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">Transliterasi Latin</p>
-                                     <p class="text-lg text-emerald-900 dark:text-emerald-100 italic leading-relaxed">{{ $step['latin'] }}</p>
+                                <div class="bg-emerald-50/50 dark:bg-emerald-900/10 rounded-2xl p-6 border border-emerald-100 dark:border-emerald-500/20">
+                                    <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-3">Transliterasi Latin</p>
+                                     <p class="text-lg text-emerald-900 dark:text-emerald-100 italic leading-relaxed font-serif">{{ $step['latin'] }}</p>
                                 </div>
                                 {{-- Meaning --}}
-                                <div class="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-5 border border-amber-100 dark:border-amber-500/20">
-                                     <p class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-2">Arti</p>
+                                <div class="bg-amber-50/50 dark:bg-amber-900/10 rounded-2xl p-6 border border-amber-100 dark:border-amber-500/20">
+                                     <p class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-3">Arti</p>
                                      <p class="text-amber-900 dark:text-amber-100 leading-relaxed">{{ $step['arti'] }}</p>
                                 </div>
                             </div>
 
                              @if(!empty($step['catatan']))
-                             <div class="flex items-start gap-3 p-4 bg-blue-50 dark:bg-blue-900/10 rounded-xl text-sm text-blue-900 dark:text-blue-100">
-                                 <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                 <p>{{ $step['catatan'] }}</p>
+                             <div class="flex items-start gap-4 p-5 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl text-sm text-blue-900 dark:text-blue-100 border border-blue-100 dark:border-blue-500/20">
+                                 <svg class="w-5 h-5 shrink-0 mt-0.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                 <p class="leading-relaxed">{{ $step['catatan'] }}</p>
                              </div>
                              @endif
                         </div>
                      </div>
                      @endforeach
                 </div>
-            </x-bento.item>
+             </div>
 
-            {{-- Sidebar --}}
-            <div class="space-y-6">
-                <x-sidebar-menu title="Belajar Islam" :links="[
-                    ['label' => 'Syahadat & Iman', 'url' => '/belajar-islam/syahadat', 'color' => 'bg-emerald-500'],
-                    ['label' => 'Panduan Sholat', 'url' => '/belajar-islam/sholat', 'color' => 'bg-blue-500'],
-                    ['label' => 'Kelas Mengaji', 'url' => '/belajar-islam/mengaji', 'color' => 'bg-purple-500'],
-                ]" />
+             {{-- Sidebar --}}
+             <div class="space-y-8">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-white/5 sticky top-24">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                         <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Belajar Islam
+                    </h3>
+                    <nav class="space-y-2">
+                        <a href="{{ route('belajar-islam.syahadat') }}" 
+                            class="flex items-center justify-between p-4 rounded-xl transition-all duration-300 {{ request()->routeIs('belajar-islam.syahadat') ? 'bg-emerald-500 text-white shadow-emerald-500/30 shadow-lg' : 'bg-gray-50 dark:bg-slate-700/30 text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-600 dark:hover:text-emerald-400' }}">
+                            <span class="font-bold text-sm">Syahadat & Iman</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </a>
+                        <a href="{{ route('belajar-islam.sholat') }}"
+                            class="flex items-center justify-between p-4 rounded-xl transition-all duration-300 {{ request()->routeIs('belajar-islam.sholat') ? 'bg-emerald-500 text-white shadow-emerald-500/30 shadow-lg' : 'bg-gray-50 dark:bg-slate-700/30 text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-600 dark:hover:text-emerald-400' }}">
+                            <span class="font-bold text-sm">Panduan Sholat</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </a>
+                        <a href="{{ route('belajar-islam.mengaji') }}"
+                            class="flex items-center justify-between p-4 rounded-xl transition-all duration-300 {{ request()->routeIs('belajar-islam.mengaji') ? 'bg-emerald-500 text-white shadow-emerald-500/30 shadow-lg' : 'bg-gray-50 dark:bg-slate-700/30 text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-600 dark:hover:text-emerald-400' }}">
+                            <span class="font-bold text-sm">Kelas Mengaji</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </a>
+                    </nav>
 
-                {{-- Quick Nav --}}
-                <x-bento.item>
-                    <h3 class="font-bold text-gray-900 dark:text-white mb-4">Urutan Sholat</h3>
-                    <div class="flex flex-wrap gap-2">
-                         @foreach($steps as $step)
-                         <a href="#step-{{ $step['no'] }}" class="px-3 py-1.5 bg-gray-100 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-600 text-gray-600 dark:text-gray-300 rounded-lg text-xs font-medium transition duration-300">
-                             {{ $step['no'] }}. {{ Str::limit($step['nama'], 15) }}
-                         </a>
-                         @endforeach
+                    {{-- Quick Nav --}}
+                    <div class="mt-8 pt-8 border-t border-gray-100 dark:border-white/5">
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-4 text-sm uppercase tracking-wider">Urutan Sholat</h3>
+                        <div class="flex flex-wrap gap-2">
+                             @foreach($steps as $step)
+                             <a href="#step-{{ $step['no'] }}" class="px-3 py-1.5 bg-gray-50 dark:bg-slate-700/50 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-600 text-gray-600 dark:text-gray-400 rounded-lg text-xs font-medium transition duration-300 border border-gray-100 dark:border-white/5">
+                                 {{ $step['no'] }}. {{ Str::limit($step['nama'], 15) }}
+                             </a>
+                             @endforeach
+                        </div>
                     </div>
-                </x-bento.item>
+                </div>
 
-                {{-- Video --}}
-                <x-bento.item class="!p-0 overflow-hidden">
-                    <div class="p-4 border-b border-gray-100 dark:border-white/5">
-                        <h3 class="font-bold text-gray-900 dark:text-white">Video Tutorial</h3>
-                    </div>
-                    <div class="aspect-video bg-black">
-                        <iframe
-                            class="w-full h-full"
-                            src="https://www.youtube.com/embed/T4auGhmeBlw"
-                            title="Tutorial Sholat"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                            loading="lazy"
-                        ></iframe>
-                    </div>
-                    <div class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">
-                        Sumber: YouTube (External)
-                    </div>
-                </x-bento.item>
+
             </div>
-        </x-bento.grid>
+        </div>
     </section>
 </x-public-layout>
