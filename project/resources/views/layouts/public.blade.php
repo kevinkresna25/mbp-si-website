@@ -39,21 +39,15 @@
                 {{-- Desktop Navigation --}}
                 <div class="hidden lg:flex items-center space-x-0.5">
                     {{-- 1. Beranda --}}
-                    <a wire:navigate href="/" class="relative px-3.5 py-2 text-sm font-medium transition {{ request()->is('/') ? 'text-emerald-900 dark:text-emerald-400 font-bold' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400' }}">
+                    <a wire:navigate href="/" class="relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 {{ request()->is('/') ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 font-bold shadow-sm' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-white/5' }}">
                         Beranda
-                        @if(request()->is('/'))
-                        <span class="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-gold-500 rounded-full"></span>
-                        @endif
                     </a>
 
                     {{-- 2. Profil (mega panel) --}}
                     <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="relative px-3.5 py-2 text-sm font-medium transition flex items-center gap-1 {{ request()->is('profil*') || request()->is('pembangunan*') ? 'text-emerald-900 dark:text-emerald-400 font-bold' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400' }}">
+                        <button class="relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 flex items-center gap-1 {{ request()->is('profil*') || request()->is('pembangunan*') ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 font-bold shadow-sm' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-white/5' }}">
                             Profil
                             <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                            @if(request()->is('profil*') || request()->is('pembangunan*'))
-                            <span class="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-gold-500 rounded-full"></span>
-                            @endif
                         </button>
                         <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" class="absolute left-1/2 -translate-x-1/2 mt-3 w-80 bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-900/5 p-2 z-50 dark:bg-slate-900/95 dark:ring-white/10">
                             {{-- Arrow notch --}}
@@ -109,12 +103,9 @@
 
                     {{-- 3. Informasi (mega panel) --}}
                     <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="relative px-3.5 py-2 text-sm font-medium transition flex items-center gap-1 {{ request()->is('pengumuman*') || request()->is('kegiatan*') || request()->is('keuangan*') ? 'text-emerald-900 dark:text-emerald-400 font-bold' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400' }}">
+                        <button class="relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 flex items-center gap-1 {{ request()->is('pengumuman*') || request()->is('kegiatan*') || request()->is('keuangan*') ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 font-bold shadow-sm' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-white/5' }}">
                             Informasi
                             <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                            @if(request()->is('pengumuman*') || request()->is('kegiatan*') || request()->is('keuangan*'))
-                            <span class="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-gold-500 rounded-full"></span>
-                            @endif
                         </button>
                         <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" class="absolute left-1/2 -translate-x-1/2 mt-3 w-80 bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-900/5 p-2 z-50 dark:bg-slate-900/95 dark:ring-white/10">
                             <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white/95 rotate-45 ring-1 ring-gray-900/5 rounded-sm dark:bg-slate-900/95 dark:ring-white/10" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
@@ -150,12 +141,9 @@
 
                     {{-- 4. Media (mega panel) --}}
                     <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="relative px-3.5 py-2 text-sm font-medium transition flex items-center gap-1 {{ request()->is('artikel*') || request()->is('video-ceramah*') ? 'text-emerald-900 dark:text-emerald-400 font-bold' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400' }}">
+                        <button class="relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 flex items-center gap-1 {{ request()->is('artikel*') || request()->is('video-ceramah*') ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 font-bold shadow-sm' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-white/5' }}">
                             Media
                             <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                            @if(request()->is('artikel*') || request()->is('video-ceramah*'))
-                            <span class="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-gold-500 rounded-full"></span>
-                            @endif
                         </button>
                         <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-900/5 p-2 z-50 dark:bg-slate-900/95 dark:ring-white/10">
                             <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white/95 rotate-45 ring-1 ring-gray-900/5 rounded-sm dark:bg-slate-900/95 dark:ring-white/10" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
@@ -182,12 +170,9 @@
 
                     {{-- 5. Layanan (mega panel - 2 column) --}}
                     <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="relative px-3.5 py-2 text-sm font-medium transition flex items-center gap-1 {{ request()->is('layanan*') || request()->is('belajar-islam*') ? 'text-emerald-900 dark:text-emerald-400 font-bold' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400' }}">
+                        <button class="relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 flex items-center gap-1 {{ request()->is('layanan*') || request()->is('belajar-islam*') ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 font-bold shadow-sm' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-white/5' }}">
                             Layanan
                             <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                            @if(request()->is('layanan*') || request()->is('belajar-islam*'))
-                            <span class="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-gold-500 rounded-full"></span>
-                            @endif
                         </button>
                         <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" class="absolute right-0 mt-3 bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-900/5 p-4 z-50 dark:bg-slate-900/95 dark:ring-white/10" style="width: 540px;">
                             <div class="absolute -top-2 right-12 w-4 h-4 bg-white/95 rotate-45 ring-1 ring-gray-900/5 rounded-sm dark:bg-slate-900/95 dark:ring-white/10" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
@@ -268,11 +253,8 @@
                     </div>
 
                     {{-- 6. Kontak --}}
-                    <a wire:navigate href="/kontak" class="relative px-3.5 py-2 text-sm font-medium transition {{ request()->is('kontak*') ? 'text-emerald-900 dark:text-emerald-400 font-bold' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400' }}">
+                    <a wire:navigate href="/kontak" class="relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 {{ request()->is('kontak*') ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 font-bold shadow-sm' : 'text-gray-600 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-white/5' }}">
                         Kontak
-                        @if(request()->is('kontak*'))
-                        <span class="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-gold-500 rounded-full"></span>
-                        @endif
                     </a>
                 </div>
 
