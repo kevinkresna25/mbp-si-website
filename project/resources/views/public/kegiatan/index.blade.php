@@ -1,9 +1,9 @@
 <x-public-layout>
     <x-page-header title="Kegiatan Masjid" subtitle="Jadwal kegiatan, kajian, dan program Masjid Bukit Palma" breadcrumb="Kegiatan">
         <div class="mt-8 flex justify-center md:justify-start">
-             <a wire:navigate href="{{ route('public.kegiatan.kalender') }}" class="inline-flex items-center px-5 py-2.5 bg-white/10 backdrop-blur-sm text-white text-sm font-medium rounded-xl hover:bg-white/20 transition border border-white/20">
+             <a wire:navigate href="{{ route('public.kegiatan.kalender') }}" class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white text-sm font-bold rounded-full hover:bg-emerald-700 transition shadow-lg shadow-emerald-600/20 hover:-translate-y-0.5">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                Lihat Kalender
+                Lihat Kalender Kegiatan
             </a>
         </div>
     </x-page-header>

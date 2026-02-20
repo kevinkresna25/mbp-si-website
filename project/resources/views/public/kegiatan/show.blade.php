@@ -1,62 +1,41 @@
 <x-public-layout>
-    <x-slot name="title">{{ $kegiatan->nama_kegiatan }}</x-slot>
+    {{-- Page Header --}}
+    <x-page-header :title="$kegiatan->nama_kegiatan" breadcrumb="Kegiatan / Detail">
+        <div class="flex flex-wrap justify-center gap-3 mt-4 animate-fade-in-up" style="animation-delay: 0.2s;">
+            <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-full text-xs font-bold uppercase tracking-wider border border-white/20 dark:border-white/10">
+                {{ $kegiatan->jenis_label }}
+            </span>
+             @php
+                $statusColor = match($kegiatan->status) {
+                    'terlaksana' => 'bg-emerald-100 text-emerald-700 border-emerald-200',
+                    'sedang_berlangsung' => 'bg-amber-100 text-amber-700 border-amber-200',
+                    'akan_datang' => 'bg-blue-100 text-blue-700 border-blue-200', 
+                    default => 'bg-gray-100 text-gray-700 border-gray-200'
+                };
+            @endphp
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border {{ $statusColor }}">
+                {{ $kegiatan->status_label }}
+            </span>
+        </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {{-- Breadcrumb --}}
-        <nav class="flex mb-8 text-sm text-gray-500 dark:text-gray-400">
-            <a wire:navigate href="/" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">Beranda</a>
-            <span class="mx-2">/</span>
-            <a wire:navigate href="{{ route('public.kegiatan.index') }}" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">Kegiatan</a>
-            <span class="mx-2">/</span>
-            <span class="font-semibold text-emerald-600 dark:text-emerald-400 truncate max-w-[200px]">{{ $kegiatan->nama_kegiatan }}</span>
-        </nav>
+        <div class="flex flex-wrap justify-center gap-6 mt-6 text-sm text-gray-600 dark:text-gray-300 font-medium animate-fade-in-up" style="animation-delay: 0.3s;">
+             <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                {{ $kegiatan->tanggal->translatedFormat('l, d F Y') }}
+            </div>
+            <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                {{ $kegiatan->waktu ? \Carbon\Carbon::parse($kegiatan->waktu)->format('H:i') . ' WIB' : 'TBA' }}
+            </div>
+             <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                {{ $kegiatan->lokasi ?? 'Masjid Bukit Palma' }}
+            </div>
+        </div>
+    </x-page-header>
 
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <x-bento.grid>
-            {{-- Hero Title (Full Width Bento Item) --}}
-            <x-bento.item span="3" class="bg-gradient-to-br from-emerald-800 to-emerald-950 text-white !border-0 min-h-[300px] flex flex-col justify-center relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')]"></div>
-                <div class="absolute right-0 top-0 w-64 h-64 bg-emerald-500 rounded-full blur-3xl opacity-20 -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-teal-500 rounded-full blur-3xl opacity-20 -ml-16 -mb-16"></div>
-                
-                <div class="relative z-10 max-w-4xl">
-                     {{-- Badges --}}
-                    <div class="flex flex-wrap gap-3 mb-6">
-                        <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-emerald-100 backdrop-blur-sm border border-white/10">
-                            {{ $kegiatan->jenis_label }}
-                        </span>
-                        @php
-                            $statusColor = match($kegiatan->status) {
-                                'terlaksana' => 'bg-emerald-500',
-                                'sedang_berlangsung' => 'bg-amber-500',
-                                'akan_datang' => 'bg-blue-500', 
-                                default => 'bg-gray-500'
-                            };
-                        @endphp
-                        <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider {{ $statusColor }} text-white shadow-lg">
-                            {{ $kegiatan->status_label }}
-                        </span>
-                    </div>
-
-                    <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-tight">
-                        {{ $kegiatan->nama_kegiatan }}
-                    </h1>
-
-                    <div class="flex flex-wrap gap-6 text-emerald-100/90 text-sm font-medium">
-                        <div class="flex items-center gap-2">
-                            <div class="p-1.5 rounded-lg bg-white/10 backdrop-blur-sm">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            </div>
-                            {{ $kegiatan->tanggal->translatedFormat('l, d F Y') }}
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="p-1.5 rounded-lg bg-white/10 backdrop-blur-sm">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </div>
-                            {{ $kegiatan->waktu ? \Carbon\Carbon::parse($kegiatan->waktu)->format('H:i') . ' WIB' : 'TBA' }}
-                        </div>
-                    </div>
-                </div>
-            </x-bento.item>
 
             {{-- Main Content --}}
             <x-bento.item span="2" class="min-h-[400px]">
@@ -102,39 +81,41 @@
             <div class="space-y-6 flex flex-col gap-6">
                 {{-- Detail Info Card --}}
                  <x-bento.item class="!p-6 relative overflow-hidden !rounded-3xl !shadow-lg !shadow-gray-200/50 dark:!shadow-none !border !border-emerald-200 dark:!border-emerald-500/20">
-                    <h3 class="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                        <span class="w-1 h-5 bg-emerald-500 rounded-full"></span>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                         <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
                         Detail Info
                     </h3>
                     
                     <div class="space-y-5">
                         <div class="flex gap-4 group">
-                            <div class="w-10 h-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/30 transition">
+                             <div class="w-10 h-10 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center text-gray-500 dark:text-gray-400 shrink-0 border border-gray-100 dark:border-white/5 group-hover:border-emerald-200 dark:group-hover:border-emerald-500/30 group-hover:text-emerald-500 transition">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             </div>
                             <div>
                                 <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">Lokasi</p>
-                                <p class="font-medium text-gray-900 dark:text-white leading-snug text-sm">{{ $kegiatan->lokasi ?? 'Masjid Bukit Palma' }}</p>
+                                <p class="font-medium text-gray-900 dark:text-white leading-snug text-sm group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">{{ $kegiatan->lokasi ?? 'Masjid Bukit Palma' }}</p>
                             </div>
                         </div>
 
                         <div class="flex gap-4 group">
-                            <div class="w-10 h-10 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition">
+                             <div class="w-10 h-10 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center text-gray-500 dark:text-gray-400 shrink-0 border border-gray-100 dark:border-white/5 group-hover:border-emerald-200 dark:group-hover:border-emerald-500/30 group-hover:text-emerald-500 transition">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                             </div>
                             <div>
                                 <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">Pemateri</p>
-                                <p class="font-medium text-gray-900 dark:text-white leading-snug text-sm">{{ $kegiatan->ustadz ?? '-' }}</p>
+                                <p class="font-medium text-gray-900 dark:text-white leading-snug text-sm group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">{{ $kegiatan->ustadz ?? '-' }}</p>
                             </div>
                         </div>
 
                         <div class="flex gap-4 group">
-                             <div class="w-10 h-10 rounded-2xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0 group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30 transition">
+                              <div class="w-10 h-10 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center text-gray-500 dark:text-gray-400 shrink-0 border border-gray-100 dark:border-white/5 group-hover:border-emerald-200 dark:group-hover:border-emerald-500/30 group-hover:text-emerald-500 transition">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
                             </div>
-                             <div>
+                              <div>
                                 <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">Kategori</p>
-                                <p class="font-medium text-gray-900 dark:text-white leading-snug text-sm">{{ $kegiatan->jenis_label }}</p>
+                                <p class="font-medium text-gray-900 dark:text-white leading-snug text-sm group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">{{ $kegiatan->jenis_label }}</p>
                             </div>
                         </div>
                     </div>

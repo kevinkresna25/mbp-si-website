@@ -1,65 +1,55 @@
 <x-public-layout>
-    <x-slot name="title">Kalender Kegiatan</x-slot>
-
-    {{-- Hero Section --}}
-    <div class="relative min-h-[40vh] flex items-center justify-center overflow-hidden bg-emerald-950 pt-24 pb-16">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')]"></div>
-        <div class="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500 rounded-full blur-[128px] opacity-20"></div>
-        <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-teal-500 rounded-full blur-[128px] opacity-20"></div>
-        
-        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-emerald-700/50 border border-emerald-600/50 text-emerald-100 text-xs font-medium mb-4 backdrop-blur-sm">
-                Agenda Masjid
-            </span>
-            <h1 class="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">Kalender Kegiatan</h1>
-            <p class="text-emerald-100/80 text-lg max-w-2xl mx-auto">
-                Jadwal lengkap kegiatan ibadah, kajian, dan sosial di Masjid Bukit Palma.
-            </p>
+    {{-- Page Header --}}
+    <x-page-header title="Kalender Kegiatan" subtitle="Jadwal lengkap kegiatan ibadah, kajian, dan program Masjid Bukit Palma" breadcrumb="Kegiatan / Kalender">
+         {{-- Legend (Moved to Header for better visibility) --}}
+        <div class="mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-up" style="animation-delay: 0.2s;">
+            <div class="flex items-center gap-1.5 px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 rounded-full border border-emerald-200 dark:border-emerald-500/20">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 
+                <span class="text-xs font-bold text-emerald-800 dark:text-emerald-200 uppercase tracking-wider">Kajian</span>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1 bg-amber-100 dark:bg-amber-900/30 rounded-full border border-amber-200 dark:border-amber-500/20">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span> 
+                <span class="text-xs font-bold text-amber-800 dark:text-amber-200 uppercase tracking-wider">PHBI</span>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full border border-blue-200 dark:border-blue-500/20">
+                <span class="w-2 h-2 rounded-full bg-blue-500"></span> 
+                <span class="text-xs font-bold text-blue-800 dark:text-blue-200 uppercase tracking-wider">Sosial</span>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 rounded-full border border-purple-200 dark:border-purple-500/20">
+                <span class="w-2 h-2 rounded-full bg-purple-500"></span> 
+                <span class="text-xs font-bold text-purple-800 dark:text-purple-200 uppercase tracking-wider">Remaja</span>
+            </div>
         </div>
-    </div>
+    </x-page-header>
 
     {{-- Calendar Section --}}
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-12 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-emerald-200 dark:border-emerald-500/20 overflow-hidden">
             
             {{-- Calendar Navigation --}}
-            <div class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 border-b border-emerald-100 dark:border-white/5 bg-gray-50/50 dark:bg-slate-800/50">
-                <div class="flex items-center gap-4">
+            <div class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 border-b border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-slate-800/50">
+                <div class="flex items-center justify-between w-full md:w-auto gap-4">
                     <a href="{{ route('public.kegiatan.kalender', ['year' => $prevMonth->year, 'month' => $prevMonth->month]) }}"
-                        class="p-2 rounded-full bg-white dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/30 dark:hover:text-emerald-400 transition shadow-sm border border-gray-200 dark:border-white/5">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        class="p-2 rounded-xl bg-white dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-600 transition shadow-sm border border-gray-200 dark:border-white/5 group">
+                        <svg class="w-5 h-5 transform group-hover:-translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                     </a>
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white capitalize">
-                        {{ $months[$month] }} <span class="text-emerald-600 dark:text-emerald-400">{{ $year }}</span>
+                    
+                    <h2 class="text-xl md:text-2xl font-black text-gray-900 dark:text-white capitalize text-center min-w-[200px]">
+                        {{ $months[$month] }} <span class="text-emerald-600 dark:text-emerald-400 font-light">{{ $year }}</span>
                     </h2>
+                    
                     <a href="{{ route('public.kegiatan.kalender', ['year' => $nextMonth->year, 'month' => $nextMonth->month]) }}"
-                        class="p-2 rounded-full bg-white dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/30 dark:hover:text-emerald-400 transition shadow-sm border border-gray-200 dark:border-white/5">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        class="p-2 rounded-xl bg-white dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-600 transition shadow-sm border border-gray-200 dark:border-white/5 group">
+                        <svg class="w-5 h-5 transform group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
-                </div>
-
-                {{-- Legend --}}
-                <div class="flex flex-wrap justify-center gap-3">
-                    <div class="flex items-center gap-1.5 text-xs font-medium text-gray-600 dark:text-gray-400">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span> Kajian
-                    </div>
-                    <div class="flex items-center gap-1.5 text-xs font-medium text-gray-600 dark:text-gray-400">
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-sm shadow-amber-500/50"></span> PHBI
-                    </div>
-                    <div class="flex items-center gap-1.5 text-xs font-medium text-gray-600 dark:text-gray-400">
-                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-sm shadow-blue-500/50"></span> Sosial
-                    </div>
-                    <div class="flex items-center gap-1.5 text-xs font-medium text-gray-600 dark:text-gray-400">
-                        <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-sm shadow-purple-500/50"></span> Remaja
-                    </div>
                 </div>
             </div>
 
             {{-- Calendar Grid --}}
-            <div class="grid grid-cols-7 border-b border-emerald-100 dark:border-white/5">
+            <div class="grid grid-cols-7 border-b border-gray-100 dark:border-white/5">
                 {{-- Headers --}}
                 @foreach(['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'] as $dayName)
-                <div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-slate-900/50 border-r border-emerald-100 dark:border-white/5 last:border-r-0">
+                <div class="py-4 text-center text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400 bg-emerald-50/50 dark:bg-slate-900/50 border-r border-gray-100 dark:border-white/5 last:border-r-0">
                     {{ $dayName }}
                 </div>
                 @endforeach
@@ -68,7 +58,7 @@
             <div class="grid grid-cols-7 bg-white dark:bg-slate-800">
                 {{-- Empty cells --}}
                 @for($i = 0; $i < $startDayOfWeek; $i++)
-                <div class="min-h-[100px] md:min-h-[120px] border-b border-r border-emerald-100 dark:border-white/5 bg-gray-50/30 dark:bg-slate-900/30"></div>
+                <div class="min-h-[120px] md:min-h-[140px] border-b border-r border-gray-100 dark:border-white/5 bg-gray-50/30 dark:bg-slate-900/30"></div>
                 @endfor
 
                 {{-- Days --}}
