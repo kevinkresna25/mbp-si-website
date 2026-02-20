@@ -20,10 +20,10 @@
 
     {{-- Calendar Section --}}
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-12 relative z-20">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-gray-100 dark:border-white/5 overflow-hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-emerald-200 dark:border-emerald-500/20 overflow-hidden">
             
             {{-- Calendar Navigation --}}
-            <div class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 border-b border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-slate-800/50">
+            <div class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 border-b border-emerald-100 dark:border-white/5 bg-gray-50/50 dark:bg-slate-800/50">
                 <div class="flex items-center gap-4">
                     <a href="{{ route('public.kegiatan.kalender', ['year' => $prevMonth->year, 'month' => $prevMonth->month]) }}"
                         class="p-2 rounded-full bg-white dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/30 dark:hover:text-emerald-400 transition shadow-sm border border-gray-200 dark:border-white/5">
@@ -56,10 +56,10 @@
             </div>
 
             {{-- Calendar Grid --}}
-            <div class="grid grid-cols-7 border-b border-gray-100 dark:border-white/5">
+            <div class="grid grid-cols-7 border-b border-emerald-100 dark:border-white/5">
                 {{-- Headers --}}
                 @foreach(['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'] as $dayName)
-                <div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-slate-900/50 border-r border-gray-100 dark:border-white/5 last:border-r-0">
+                <div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-slate-900/50 border-r border-emerald-100 dark:border-white/5 last:border-r-0">
                     {{ $dayName }}
                 </div>
                 @endforeach
@@ -68,7 +68,7 @@
             <div class="grid grid-cols-7 bg-white dark:bg-slate-800">
                 {{-- Empty cells --}}
                 @for($i = 0; $i < $startDayOfWeek; $i++)
-                <div class="min-h-[100px] md:min-h-[120px] border-b border-r border-gray-100 dark:border-white/5 bg-gray-50/30 dark:bg-slate-900/30"></div>
+                <div class="min-h-[100px] md:min-h-[120px] border-b border-r border-emerald-100 dark:border-white/5 bg-gray-50/30 dark:bg-slate-900/30"></div>
                 @endfor
 
                 {{-- Days --}}
@@ -78,7 +78,7 @@
                     $dayKegiatan = $kegiatan->filter(fn($k) => $k->tanggal->format('Y-m-d') === $dateStr);
                     $isToday = $dateStr === now()->format('Y-m-d');
                 @endphp
-                <div class="min-h-[100px] md:min-h-[120px] border-b border-r border-gray-100 dark:border-white/5 p-2 transition hover:bg-gray-50 dark:hover:bg-white/5 group relative {{ $isToday ? 'bg-emerald-50/50 dark:bg-emerald-900/10' : '' }}">
+                <div class="min-h-[100px] md:min-h-[120px] border-b border-r border-emerald-100 dark:border-white/5 p-2 transition hover:bg-gray-50 dark:hover:bg-white/5 group relative {{ $isToday ? 'bg-emerald-50/50 dark:bg-emerald-900/10' : '' }}">
                     <div class="flex justify-between items-start mb-1">
                         <span class="text-sm font-medium w-7 h-7 flex items-center justify-center rounded-full {{ $isToday ? 'bg-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'text-gray-700 dark:text-gray-300' }}">
                             {{ $day }}
@@ -126,7 +126,7 @@
                     $remainingCells = $totalCells % 7 === 0 ? 0 : 7 - ($totalCells % 7);
                 @endphp
                 @for($i = 0; $i < $remainingCells; $i++)
-                <div class="min-h-[100px] md:min-h-[120px] border-b border-r border-gray-100 dark:border-white/5 bg-gray-50/30 dark:bg-slate-900/30"></div>
+                <div class="min-h-[100px] md:min-h-[120px] border-b border-r border-emerald-100 dark:border-white/5 bg-gray-50/30 dark:bg-slate-900/30"></div>
                 @endfor
             </div>
         </div>
@@ -140,7 +140,7 @@
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach($kegiatan as $event)
-                <a href="{{ route('public.kegiatan.show', $event->id) }}" class="flex items-start gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-white/5 hover:border-emerald-500/30 hover:shadow-md transition group">
+                <a href="{{ route('public.kegiatan.show', $event->id) }}" class="flex items-start gap-4 p-4 bg-white dark:bg-slate-800 rounded-3xl border border-emerald-200 dark:border-emerald-500/20 hover:border-emerald-500/40 hover:shadow-lg hover:-translate-y-1 transition group">
                     <div class="flex flex-col items-center justify-center w-14 h-14 bg-gray-100 dark:bg-slate-700 rounded-xl shrink-0">
                          <span class="text-xs font-bold text-red-500 uppercase">{{ $event->tanggal->translatedFormat('M') }}</span>
                          <span class="text-xl font-black text-gray-900 dark:text-white leading-none">{{ $event->tanggal->format('d') }}</span>

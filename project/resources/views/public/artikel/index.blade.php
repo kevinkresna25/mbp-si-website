@@ -13,10 +13,10 @@
                         @endif
                         <div class="relative flex-1">
                             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari artikel..."
-                                class="w-full pl-10 pr-4 py-2.5 rounded-xl border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-emerald-500 focus:ring-emerald-500 shadow-sm transition">
+                                class="w-full pl-10 pr-4 py-2.5 rounded-3xl border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-emerald-500 focus:ring-emerald-500 shadow-sm transition">
                             <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         </div>
-                        <button type="submit" class="px-6 py-2.5 bg-emerald-600 text-white font-medium rounded-xl hover:bg-emerald-700 transition shadow-sm hover:shadow">Cari</button>
+                        <button type="submit" class="px-6 py-2.5 bg-emerald-600 text-white font-medium rounded-3xl hover:bg-emerald-700 transition shadow-sm hover:shadow">Cari</button>
                     </form>
                 </div>
 
@@ -33,7 +33,7 @@
                 {{-- Articles Grid --}}
                 <x-card-grid>
                     @forelse($articles as $article)
-                    <article class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 overflow-hidden hover:shadow-md hover:border-emerald-500/30 transition group flex flex-col h-full">
+                    <article class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition duration-300 group flex flex-col h-full">
                         <a wire:navigate href="{{ route('public.artikel.show', $article->slug) }}" class="block shrink-0">
                             <div class="aspect-video bg-gray-100 dark:bg-slate-700 overflow-hidden relative">
                                 @if($article->featured_image)
@@ -61,9 +61,9 @@
                                 <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">{{ $article->title }}</h2>
                             </a>
                             <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 mb-4 flex-grow leading-relaxed">{{ $article->excerpt }}</p>
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-white/5 mt-auto">
+                            <div class="flex items-center justify-between pt-4 border-t border-emerald-100 dark:border-white/5 mt-auto">
                                 <div class="flex items-center space-x-2">
-                                     <div class="w-6 h-6 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-gray-500 dark:text-gray-400">
+                                     <div class="w-6 h-6 rounded-full bg-emerald-100 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-emerald-600 dark:text-gray-400">
                                         {{ substr($article->author->name, 0, 1) }}
                                      </div>
                                      <span class="text-xs text-gray-500 dark:text-gray-400">{{ $article->author->name }}</span>
@@ -92,26 +92,26 @@
             {{-- Sidebar --}}
             <aside class="lg:w-80 flex-shrink-0">
                 <div class="sticky top-24 space-y-6">
-                    <x-bento.item class="!p-0 overflow-hidden">
-                        <div class="bg-gray-50 dark:bg-slate-700/50 p-4 border-b border-gray-100 dark:border-white/5">
-                            <h3 class="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm">Kategori</h3>
-                        </div>
-                        <div class="p-2 space-y-1">
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                             <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                            Kategori
+                        </h3>
+                        <div class="space-y-2">
                             <a wire:navigate href="{{ route('public.artikel.index') }}"
-                                class="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition {{ !request('kategori') ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 font-medium' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700/50' }}">
-                                <span>Semua Artikel</span>
-                                <span class="bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-gray-400 py-0.5 px-2 rounded-full text-xs">{{ $articles->total() }}</span>
+                                class="flex items-center justify-between p-3 rounded-xl transition-all duration-300 {{ !request('kategori') ? 'bg-emerald-500 text-white shadow-emerald-500/30 shadow-lg' : 'bg-gray-50 dark:bg-slate-700/30 text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-600 dark:hover:text-emerald-400' }}">
+                                <span class="font-bold text-sm">Semua Artikel</span>
+                                <span class="bg-white/20 text-white py-0.5 px-2 rounded-full text-xs {{ !request('kategori') ? 'text-white' : 'text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-slate-600' }}">{{ $articles->total() }}</span>
                             </a>
                             @foreach($categories as $cat)
                              <a wire:navigate href="{{ route('public.artikel.index', ['kategori' => $cat->slug]) }}"
-                                class="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition {{ request('kategori') === $cat->slug ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 font-medium' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700/50' }}">
-                                <span>{{ $cat->name }}</span>
-                                <span class="bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-gray-400 py-0.5 px-2 rounded-full text-xs">{{ $cat->articles_count }}</span>
+                                class="flex items-center justify-between p-3 rounded-xl transition-all duration-300 {{ request('kategori') === $cat->slug ? 'bg-emerald-500 text-white shadow-emerald-500/30 shadow-lg' : 'bg-gray-50 dark:bg-slate-700/30 text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-600 dark:hover:text-emerald-400' }}">
+                                <span class="font-bold text-sm">{{ $cat->name }}</span>
+                                <span class="py-0.5 px-2 rounded-full text-xs {{ request('kategori') === $cat->slug ? 'bg-white/20 text-white' : 'bg-gray-200 dark:bg-slate-600 text-gray-500 dark:text-gray-400' }}">{{ $cat->articles_count }}</span>
                             </a>
                             @endforeach
                         </div>
-                    </x-bento.item>
-                </div>
+                    </div>
             </aside>
         </div>
     </section>

@@ -115,10 +115,10 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($relatedArticles as $related)
-                    <article class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-gray-100 dark:border-white/5 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300 group h-full flex flex-col">
+                    <article class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition duration-300 group h-full flex flex-col">
                         <div class="aspect-video bg-gray-100 dark:bg-slate-700 overflow-hidden relative">
                              @if($related->featured_image)
-                                <img src="{{ Storage::url($related->featured_image) }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                                <img src="{{ Storage::url($related->featured_image) }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                              @else
                                  <div class="w-full h-full flex items-center justify-center bg-emerald-50 dark:bg-slate-700 text-emerald-200 dark:text-slate-600">
                                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
@@ -143,7 +143,7 @@
                             <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 mb-4">
                                 {{ Str::limit(strip_tags($related->content), 100) }}
                             </p>
-                            <div class="mt-auto pt-4 border-t border-gray-100 dark:border-white/5 flex items-center justify-between">
+                            <div class="mt-auto pt-4 border-t border-emerald-100 dark:border-white/5 flex items-center justify-between">
                                 <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider group-hover:underline">Baca Selengkapnya</span>
                                 <svg class="w-5 h-5 text-emerald-500 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </div>

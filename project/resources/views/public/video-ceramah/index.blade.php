@@ -6,10 +6,10 @@
         <div class="mb-10 max-w-2xl mx-auto">
             <form method="GET" class="relative">
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari video atau ustadz..."
-                    class="w-full pl-12 pr-4 py-3 rounded-2xl border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-emerald-500 focus:ring-emerald-500 shadow-sm transition text-lg">
+                    class="w-full pl-12 pr-4 py-3 rounded-3xl border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-emerald-500 focus:ring-emerald-500 shadow-sm transition text-lg">
                 <svg class="w-6 h-6 text-gray-400 absolute left-4 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <div class="absolute right-2 top-2">
-                    <button type="submit" class="px-6 py-1.5 bg-emerald-600 text-white font-medium rounded-xl hover:bg-emerald-700 transition shadow-sm">Cari</button>
+                    <button type="submit" class="px-6 py-1.5 bg-emerald-600 text-white font-medium rounded-3xl hover:bg-emerald-700 transition shadow-sm">Cari</button>
                 </div>
             </form>
             @if(request('search'))
@@ -25,7 +25,7 @@
         {{-- Video Grid --}}
         <x-card-grid>
             @forelse($videos as $video)
-            <article class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 overflow-hidden hover:shadow-md hover:border-emerald-500/30 transition group flex flex-col h-full">
+            <article class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition duration-300 group flex flex-col h-full">
                 <a wire:navigate href="{{ route('public.video-ceramah.show', $video) }}" class="block relative group-hover:opacity-90 transition">
                     <div class="aspect-video bg-gray-900 overflow-hidden relative">
                         @if($video->thumbnail)
@@ -54,7 +54,7 @@
                         <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition leading-tight">{{ $video->judul }}</h2>
                     </a>
                     
-                    <div class="mt-auto flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 pt-4 border-t border-gray-100 dark:border-white/5">
+                    <div class="mt-auto flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 pt-4 border-t border-emerald-100 dark:border-white/5">
                         <div class="flex items-center gap-2">
                              @if($video->ustadz)
                              <span class="font-medium text-gray-700 dark:text-gray-300">{{ $video->ustadz }}</span>

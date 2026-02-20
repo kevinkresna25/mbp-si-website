@@ -62,7 +62,7 @@
             <x-bento.item span="2" class="min-h-[400px]">
                  {{-- Banner Image inside Content --}}
                 @if($kegiatan->banner_image)
-                <div class="rounded-2xl overflow-hidden mb-8 shadow-sm border border-gray-100 dark:border-white/5">
+                <div class="rounded-3xl overflow-hidden mb-8 shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-white/5">
                     <img src="{{ Storage::url($kegiatan->banner_image) }}" alt="{{ $kegiatan->nama_kegiatan }}" class="w-full h-auto object-cover">
                 </div>
                 @endif
@@ -73,17 +73,17 @@
 
                 {{-- Related Activities --}}
                 @if($relatedKegiatan->count() > 0)
-                <div class="mt-12 pt-8 border-t border-gray-100 dark:border-white/5">
+                <div class="mt-12 pt-8 border-t border-emerald-100 dark:border-white/5">
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Kegiatan Serupa</h3>
                     <div class="space-y-4">
                         @foreach($relatedKegiatan as $related)
-                        <a href="{{ route('public.kegiatan.show', $related->id) }}" class="flex items-center gap-4 group">
-                            <div class="w-16 h-16 rounded-xl bg-gray-100 dark:bg-slate-700 overflow-hidden relative shrink-0">
+                        <a href="{{ route('public.kegiatan.show', $related->id) }}" class="flex items-center gap-4 group p-3 rounded-3xl hover:bg-emerald-50 dark:hover:bg-slate-800 transition border border-transparent hover:border-emerald-100 dark:hover:border-white/5">
+                            <div class="w-20 h-20 rounded-2xl bg-gray-100 dark:bg-slate-700 overflow-hidden relative shrink-0 shadow-sm">
                                 @if($related->banner_image)
                                     <img src="{{ Storage::url($related->banner_image) }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                                 @else
                                     <div class="w-full h-full flex items-center justify-center text-gray-400">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                                     </div>
                                 @endif
                             </div>
@@ -101,7 +101,7 @@
             {{-- Sidebar --}}
             <div class="space-y-6 flex flex-col gap-6">
                 {{-- Detail Info Card --}}
-                 <x-bento.item class="!p-6 relative overflow-hidden">
+                 <x-bento.item class="!p-6 relative overflow-hidden !rounded-3xl !shadow-lg !shadow-gray-200/50 dark:!shadow-none !border !border-emerald-200 dark:!border-emerald-500/20">
                     <h3 class="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                         <span class="w-1 h-5 bg-emerald-500 rounded-full"></span>
                         Detail Info
@@ -109,7 +109,7 @@
                     
                     <div class="space-y-5">
                         <div class="flex gap-4 group">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/30 transition">
+                            <div class="w-10 h-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/30 transition">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             </div>
                             <div>
@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="flex gap-4 group">
-                            <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition">
+                            <div class="w-10 h-10 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                             </div>
                             <div>
@@ -129,7 +129,7 @@
                         </div>
 
                         <div class="flex gap-4 group">
-                             <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0 group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30 transition">
+                             <div class="w-10 h-10 rounded-2xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0 group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30 transition">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
                             </div>
                              <div>
@@ -141,7 +141,7 @@
                 </x-bento.item>
 
                 {{-- Share Card --}}
-                 <x-bento.item class="!p-6 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-slate-800 border-emerald-100 dark:border-white/5">
+                 <x-bento.item class="!p-6 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-slate-800 !rounded-3xl !shadow-lg !shadow-gray-200/50 dark:!shadow-none !border !border-emerald-200 dark:!border-emerald-500/20">
                     <p class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4 text-center">Bagikan Kegiatan</p>
                     <div class="grid grid-cols-2 gap-3">
                             <a href="https://wa.me/?text={{ urlencode($kegiatan->nama_kegiatan . ' - ' . url()->current()) }}" target="_blank" class="flex items-center justify-center gap-2 px-3 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition shadow-lg shadow-emerald-500/20">

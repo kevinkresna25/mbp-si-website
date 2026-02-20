@@ -6,10 +6,10 @@
         <div class="mb-10 max-w-2xl mx-auto">
             <form method="GET" class="relative">
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari pengumuman..."
-                    class="w-full pl-12 pr-4 py-3 rounded-2xl border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-emerald-500 focus:ring-emerald-500 shadow-sm transition text-lg">
+                    class="w-full pl-12 pr-4 py-3 rounded-3xl border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-emerald-500 focus:ring-emerald-500 shadow-sm transition text-lg">
                 <svg class="w-6 h-6 text-gray-400 absolute left-4 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <div class="absolute right-2 top-2">
-                    <button type="submit" class="px-6 py-1.5 bg-emerald-600 text-white font-medium rounded-xl hover:bg-emerald-700 transition shadow-sm">Cari</button>
+                    <button type="submit" class="px-6 py-1.5 bg-emerald-600 text-white font-medium rounded-3xl hover:bg-emerald-700 transition shadow-sm">Cari</button>
                 </div>
             </form>
             @if(request('search'))
@@ -25,19 +25,19 @@
         {{-- Pengumuman Grid --}}
         <x-card-grid>
             @forelse($pengumuman as $item)
-            <article class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 p-6 hover:shadow-md hover:border-emerald-500/30 transition group flex flex-col h-full relative overflow-hidden">
+            <article class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 p-6 hover:shadow-2xl hover:-translate-y-1 transition duration-300 group flex flex-col h-full relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-emerald-500 to-emerald-600"></div>
                 
                 {{-- Header --}}
                 <div class="flex items-start justify-between mb-4 pl-4">
                     <div class="flex flex-col">
-                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Pengumuman</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1">Pengumuman</span>
                          <a href="{{ route('public.pengumuman.show', $item) }}">
                             <h2 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition leading-tight">{{ $item->title }}</h2>
                         </a>
                     </div>
                     @if($item->expired_at)
-                    <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[10px] font-bold uppercase tracking-wide {{ $item->expired_at->isPast() ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' }}">
+                    <span class="inline-flex items-center px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wide {{ $item->expired_at->isPast() ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' }}">
                         {{ $item->expired_at->isPast() ? 'Kadaluarsa' : 'Berlaku' }}
                     </span>
                     @endif
@@ -49,9 +49,9 @@
                 </div>
 
                 {{-- Footer --}}
-                <div class="mt-auto pl-4 pt-4 border-t border-gray-100 dark:border-white/5 flex items-center justify-between">
+                <div class="mt-auto pl-4 pt-4 border-t border-emerald-100 dark:border-white/5 flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                         <div class="w-6 h-6 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-gray-500">
+                         <div class="w-6 h-6 rounded-full bg-emerald-100 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-emerald-600 dark:text-gray-400">
                             {{ substr($item->creator->name ?? 'A', 0, 1) }}
                          </div>
                          <span class="text-xs text-gray-500 dark:text-gray-400">{{ $item->created_at->diffForHumans() }}</span>

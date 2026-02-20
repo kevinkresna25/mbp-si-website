@@ -51,7 +51,7 @@
                     }
                 @endphp
 
-                <div class="aspect-video bg-black rounded-2xl shadow-2xl overflow-hidden ring-4 ring-white dark:ring-slate-800">
+                <div class="aspect-video bg-black rounded-3xl shadow-2xl overflow-hidden ring-4 ring-white dark:ring-slate-800">
                     @if($embedUrl)
                          <iframe src="{{ $embedUrl }}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     @else
@@ -81,7 +81,7 @@
             </div>
             <x-card-grid>
                 @foreach($relatedVideos as $related)
-                <article class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 overflow-hidden hover:shadow-md transition group h-full flex flex-col">
+                <article class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition duration-300 group h-full flex flex-col">
                     <div class="aspect-video bg-gray-100 dark:bg-slate-700 overflow-hidden relative">
                          <a href="{{ route('public.video-ceramah.show', $related) }}" class="block w-full h-full">
                              @if($related->thumbnail)

@@ -28,7 +28,7 @@
                             'operasional' => 'from-gray-500 to-gray-600',
                         ];
                     @endphp
-                    <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-gray-100 dark:border-white/5 overflow-hidden hover:shadow-lg hover:scale-[1.02] transition duration-300 group">
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition duration-300 group">
                         <div class="bg-gradient-to-r {{ $bgColors[$cat['category']] ?? 'from-gray-500 to-gray-600' }} p-6 relative overflow-hidden">
                              <div class="absolute right-0 top-0 w-24 h-24 bg-white opacity-10 rounded-full blur-2xl -mr-8 -mt-8"></div>
                             <div class="flex items-center space-x-4 relative z-10">
@@ -40,7 +40,7 @@
                         </div>
                         <div class="p-6">
                             <p class="text-3xl font-black text-gray-900 dark:text-white mb-6">Rp {{ number_format($cat['balance'], 0, ',', '.') }}</p>
-                            <div class="flex items-center justify-between text-sm py-3 border-t border-gray-100 dark:border-white/5">
+                            <div class="flex items-center justify-between text-sm py-3 border-t border-emerald-100 dark:border-white/5">
                                 <div class="flex flex-col">
                                      <span class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1">Pemasukan</span>
                                      <span class="text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
@@ -62,7 +62,7 @@
             </div>
 
             {{-- Total --}}
-            <div class="bg-gradient-to-br from-emerald-800 to-emerald-950 text-white rounded-3xl shadow-xl p-8 md:p-12 text-center relative overflow-hidden border border-emerald-700/50">
+            <div class="bg-gradient-to-br from-emerald-800 to-emerald-950 text-white rounded-3xl shadow-2xl p-8 md:p-12 text-center relative overflow-hidden border border-emerald-700/50">
                 <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10"></div>
                 <div class="absolute -top-24 -left-24 w-64 h-64 bg-emerald-500 rounded-full blur-3xl opacity-20"></div>
                 <div class="absolute bottom-0 right-0 w-64 h-64 bg-teal-500 rounded-full blur-3xl opacity-20"></div>
@@ -98,7 +98,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($donationTargets as $target)
-                    <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-gray-100 dark:border-white/5 p-6 hover:shadow-xl hover:-translate-y-1 transition duration-300 group flex flex-col h-full">
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 p-6 hover:shadow-2xl hover:-translate-y-1 transition duration-300 group flex flex-col h-full">
                         <div class="flex items-center justify-between mb-4">
                             <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400">
                                 {{ $target->category_ziswaf->label() }}
@@ -129,7 +129,7 @@
                                 </div>
                             </div>
 
-                            <a href="{{ route('keuangan.donasi') }}" class="block w-full text-center px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition shadow-lg shadow-emerald-600/20 active:scale-95">
+                            <a href="{{ route('keuangan.donasi') }}" class="block w-full text-center px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-2xl transition shadow-lg shadow-emerald-600/20 active:scale-95">
                                 Donasi Sekarang
                             </a>
                         </div>
@@ -148,7 +148,7 @@
                 Laporan Bulanan
                 <span class="w-8 h-1 bg-emerald-500 rounded-full"></span>
             </h2>
-            <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-gray-100 dark:border-white/5 p-6 md:p-8">
+            <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 p-6 md:p-8">
                 <livewire:financial-dashboard :is-public="true" />
             </div>
         </div>

@@ -58,7 +58,7 @@
 
             {{-- 1. Jadwal Sholat (Compact & Glowing) --}}
             @if($prayerTime)
-            <div class="md:col-span-1 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-6 border border-gray-200/50 dark:border-white/10 shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 group reveal-on-scroll">
+            <div class="md:col-span-1 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-6 border border-emerald-200 dark:border-emerald-500/20 shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 group reveal-on-scroll">
                 <div class="flex items-center justify-between mb-4">
                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -85,7 +85,7 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="mt-6 pt-4 border-t border-gray-100 dark:border-white/10 text-center">
+                <div class="mt-6 pt-4 border-t border-emerald-100 dark:border-white/10 text-center">
                     <a href="/layanan/jadwal-salat" class="text-sm text-emerald-600 hover:text-emerald-500 font-medium">Lihat Jadwal Lengkap &rarr;</a>
                 </div>
             </div>
@@ -93,7 +93,7 @@
 
             {{-- 2. Pengumuman (Span 2 Cols) --}}
             @if($pengumuman->isNotEmpty())
-            <div class="md:col-span-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/50 dark:border-white/10 shadow-lg relative overflow-hidden group reveal-on-scroll">
+            <div class="md:col-span-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-emerald-200 dark:border-emerald-500/20 shadow-lg relative overflow-hidden group reveal-on-scroll">
                 <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                     <svg class="w-32 h-32 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
                 </div>
@@ -129,7 +129,7 @@
             {{-- 3. Donasi (Progress Card) --}}
             @if($donationTargets->isNotEmpty())
             @php $target = $donationTargets->first(); @endphp
-            <div class="md:col-span-1 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-6 text-white shadow-lg shadow-emerald-500/20 relative overflow-hidden reveal-on-scroll">
+            <div class="md:col-span-1 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-6 text-white shadow-lg shadow-emerald-500/20 border border-white/20 relative overflow-hidden reveal-on-scroll">
                 {{-- Pattern Overlay --}}
                 <div class="absolute inset-0 opacity-10">
                     <svg class="w-full h-full" viewBox="0 0 100 100" fill="none"><circle cx="100" cy="0" r="50" stroke="white" stroke-width="20" /></svg>
@@ -163,7 +163,7 @@
 
             {{-- 4. Kutipan / Quote (Span 3 on MD, 2 on LG) --}}
             @if($kutipanHikmah)
-            <div class="md:col-span-2 lg:col-span-2 bg-amber-50 dark:bg-amber-900/10 rounded-3xl p-8 border border-amber-100 dark:border-amber-500/10 relative overflow-hidden reveal-on-scroll">
+            <div class="md:col-span-2 lg:col-span-2 bg-amber-50 dark:bg-amber-900/10 rounded-3xl p-8 border border-amber-200 dark:border-amber-500/20 relative overflow-hidden reveal-on-scroll">
                 <div class="absolute top-4 left-4 text-amber-200 dark:text-amber-500/20">
                     <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
                 </div>
@@ -180,7 +180,7 @@
 
             {{-- 5. Sambutan Ketua (Portrait Card) --}}
             @if($sambutan)
-            <div class="md:col-span-1 lg:col-span-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/50 dark:border-white/10 shadow-lg flex flex-col md:flex-row items-center gap-6 reveal-on-scroll">
+            <div class="md:col-span-1 lg:col-span-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-emerald-200 dark:border-emerald-500/20 shadow-lg flex flex-col md:flex-row items-center gap-6 reveal-on-scroll">
                 <div class="flex-shrink-0">
                     <div class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-lg">
                          {{-- Placeholder for Ketua Photo --}}
@@ -200,7 +200,7 @@
 
             {{-- 6. Galeri (Image Grid) --}}
             @if($galleries->isNotEmpty())
-            <div class="md:col-span-3 lg:col-span-4 bg-gray-900 rounded-3xl p-8 relative overflow-hidden group reveal-on-scroll">
+            <div class="md:col-span-3 lg:col-span-4 bg-gray-900 rounded-3xl p-8 relative overflow-hidden group border border-gray-700 dark:border-gray-600 reveal-on-scroll">
                  <div class="absolute inset-0 bg-cover bg-center opacity-30 transition-transform duration-700 group-hover:scale-105" style="background-image: url('{{ $galleries->first()->getFirstMediaUrl('photos', 'thumb') }}')"></div>
                  <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
                  

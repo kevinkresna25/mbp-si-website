@@ -43,7 +43,7 @@
 
         {{-- Content --}}
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="prose prose-lg prose-emerald dark:prose-invert max-w-none bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-white/5 relative -mt-20 z-10">
+            <div class="prose prose-lg prose-emerald dark:prose-invert max-w-none bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-none border border-emerald-200 dark:border-emerald-500/20 relative -mt-20 z-10">
                 {!! $pengumuman->content !!}
             </div>
 
