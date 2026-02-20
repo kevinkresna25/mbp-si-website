@@ -7,7 +7,7 @@
             <div class="absolute -top-10 -left-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl rounded-tr-none pointer-events-none"></div>
             <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl rounded-bl-none pointer-events-none"></div>
 
-            <div class="relative bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-white/5 flex flex-col lg:flex-row">
+            <div class="relative bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden border border-emerald-200 dark:border-emerald-500/20 flex flex-col lg:flex-row">
                 
                 {{-- Left Column: Contact Info --}}
                 <div class="w-full lg:w-2/5 bg-gradient-to-br from-emerald-900 to-emerald-800 text-white p-8 lg:p-12 relative overflow-hidden">
@@ -149,7 +149,7 @@
             </div>
 
             {{-- Map Section (Below the Card) --}}
-            <div class="mt-8 bg-white dark:bg-slate-800 rounded-3xl p-4 shadow-sm border border-gray-100 dark:border-white/5">
+            <div class="mt-8 bg-white dark:bg-slate-800 rounded-3xl p-4 shadow-sm border border-emerald-200 dark:border-emerald-500/20">
                 <iframe
                     src="{{ site_setting('google_maps_embed', '') }}"
                     width="100%" height="300" style="border:0;" class="w-full rounded-2xl grayscale hover:grayscale-0 transition duration-700"
